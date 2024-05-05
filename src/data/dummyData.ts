@@ -479,3 +479,36 @@ export const sampleArcs = [
     color: colors[Math.floor(Math.random() * (colors.length - 1))],
   },
 ];
+
+export const galleryCards = [
+  {
+    id: 1,
+    className: "md:col-span-2",
+    thumbnail: "/travel-banner3.jpg",
+  },
+  {
+    id: 2,
+    className: "col-span-1",
+    thumbnail: "/travel-banner1.jpg",
+  },
+  {
+    id: 3,
+    className: "col-span-1",
+    thumbnail: "/travel-banner2.jpg",
+  },
+  {
+    id: 4,
+    className: "md:col-span-2",
+    thumbnail: "/travel-banner4.jpg",
+  },
+  {
+    id: 5,
+    className: "md:col-span-2",
+    thumbnail: "/travel-banner3.jpg",
+  },
+  {
+    id: 6,
+    className: "col-span-1",
+    thumbnail: "/travel-banner1.jpg",
+  },
+];
