@@ -39,7 +39,7 @@ export const Product = ({ product }: { product: TProduct }) => {
 
   return (
     ///products/${product.id}
-    <Link className="" href={`#`}>
+    <Link href={`/product/1`}>
       <Card className="h-full">
         <CardHeader className="p-0">
           <div className="relative h-60 w-full">
@@ -60,14 +60,15 @@ export const Product = ({ product }: { product: TProduct }) => {
             {product.description}
           </p>
           <div className="flex justify-between">
-            <div>
+            <div className="flex gap-2 h-8 pt-1">
               {product?.isAvailable ? (
                 <Price />
               ) : (
-                <Badge className="bg-[#2A6F37]" variant="secondary">
-                  Out of stock
+                <Badge className="bg-[#2A6F37] text-white" variant="secondary">
+                  дууссан
                 </Badge>
               )}
+              <Badge variant="default">{product.categories[0].title}</Badge>
             </div>
             <Button className="bg-[#2A6F37]" size={"sm"}>
               Үзэх
