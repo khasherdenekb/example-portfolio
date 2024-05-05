@@ -14,11 +14,11 @@ const Videos = () => {
         <CardHeader>
           <CardTitle>
             <h2 className="scroll-m-20 text-3xl font-semibold tracking-tight first:mt-0 pb-2 text-[#266431]">
-              Бидний талаарх контент
+              Миний талаарх контент
             </h2>
           </CardTitle>
           <CardDescription>
-            <p>Та бидний талаарх контентуудыг нэг дороос харах боломжтой.</p>
+            <p>Та миний контентуудыг нэг дороос харах боломжтой.</p>
           </CardDescription>
         </CardHeader>
         <CardContent>
