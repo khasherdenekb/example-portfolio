@@ -8,7 +8,7 @@ const Footer = () => {
       <p className="text-zinc-700 font-normal text-md">С. Баасанжав</p>
 
       <div className="flex flex-col items-end">
-        <div className="text-sm flex gap-2 text-muted-foreground ">
+        <div className="text-sm hidden lg:flex gap-2 text-muted-foreground ">
           <Link
             className="hover:text-[#224945] hover:font-medium text-[#266431]"
             href={"#"}

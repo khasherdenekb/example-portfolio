@@ -6,7 +6,7 @@ const ProductProgram = () => {
   return (
     <div className="pb-8">
       <PageTitle title={"Бүтээгдэхүүний хөтөлбөр"} />
-      <div className=" relative h-[700px] w-full z-[-1] ">
+      <div className=" relative h-[200px] lg:h-[700px] w-full z-[-1] ">
         <Image
           src={"/travel-banner4.jpg"}
           fill

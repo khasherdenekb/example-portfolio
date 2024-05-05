@@ -6,7 +6,7 @@ const InternationalTravel = () => {
   return (
     <div className="pb-8">
       <PageTitle title={"Олон улсын аялал"} />
-      <div className=" relative h-[700px] w-full z-[-1] ">
+      <div className=" relative h-[200px] lg:h-[700px] w-full z-[-1] ">
         <Image
           src={"/travel-banner3.jpg"}
           fill

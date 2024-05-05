@@ -6,7 +6,7 @@ const Links = () => {
   return (
     <div className="pb-8">
       <PageTitle title={"Холбоосууд"} />
-      <div className=" relative h-[700px] w-full z-[-1] ">
+      <div className=" relative h-[200px] lg:h-[700px] w-full z-[-1] ">
         <Image
           src={"/travel-banner4.jpg"}
           fill

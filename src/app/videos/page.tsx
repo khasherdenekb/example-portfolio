@@ -9,7 +9,7 @@ import React from "react";
 
 const Videos = () => {
   return (
-    <div className="py-5">
+    <div className="py-20 lg:py-5">
       <Card>
         <CardHeader>
           <CardTitle>
@@ -23,7 +23,7 @@ const Videos = () => {
         </CardHeader>
         <CardContent>
           <div>
-            <div className="h-[650px]">
+            <div className="lg:h-[650px] h-[280px]">
               <iframe
                 className="flex-1 w-full h-full"
                 src="https://www.youtube.com/embed/wCYR2tUQlaw?si=IB3_truxFna2OJXn"
