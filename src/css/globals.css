@@ -66,4 +66,10 @@
   body {
     @apply bg-background text-foreground;
   }
+  text-herbalife {
+    @apply text-[#266431];
+  }
+  bg-herbalife {
+    @apply bg-[#2A6F37];
+  }
 }

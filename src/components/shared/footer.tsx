@@ -9,22 +9,31 @@ const Footer = () => {
 
       <div className="flex flex-col items-end">
         <div className="text-sm flex gap-2 text-muted-foreground ">
-          <Link className="hover:text-black" href={"#"}>
+          <Link
+            className="hover:text-[#224945] hover:font-medium text-[#266431]"
+            href={"#"}
+          >
             Бидний тухай
           </Link>
           <p>|</p>
-          <Link className="hover:text-black" href={"#"}>
+          <Link
+            className="hover:text-[#224945] hover:font-medium text-[#266431]"
+            href={"#"}
+          >
             Холбоосууд
           </Link>
           <p>|</p>
-          <Link className="hover:text-black" href={"#"}>
+          <Link
+            className="hover:text-[#224945] hover:font-medium text-[#266431]"
+            href={"#"}
+          >
             Холбоо барих
           </Link>
         </div>
         <div className="flex gap-4 pt-1">
-          <FacebookIcon className=" text-muted-foreground cursor-pointer" />
-          <LinkedinIcon className=" text-muted-foreground cursor-pointer" />
-          <YoutubeIcon className=" text-muted-foreground cursor-pointer" />
+          <FacebookIcon className=" text-[#266431] cursor-pointer" />
+          <LinkedinIcon className=" text-[#266431] cursor-pointer" />
+          <YoutubeIcon className=" text-[#266431] cursor-pointer" />
         </div>
       </div>
     </div>

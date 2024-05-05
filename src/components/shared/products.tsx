@@ -34,7 +34,7 @@ export const ProductSkeletonGrid = () => {
 
 export const Product = ({ product }: { product: TProduct }) => {
   function Price() {
-    return <Badge>${product?.price}</Badge>;
+    return <Badge className="bg-[#2A6F37]">${product?.price}</Badge>;
   }
 
   return (
@@ -64,11 +64,13 @@ export const Product = ({ product }: { product: TProduct }) => {
               {product?.isAvailable ? (
                 <Price />
               ) : (
-                <Badge variant="secondary">Out of stock</Badge>
+                <Badge className="bg-[#2A6F37]" variant="secondary">
+                  Out of stock
+                </Badge>
               )}
             </div>
-            <Button size={"sm"}>
-              Авах
+            <Button className="bg-[#2A6F37]" size={"sm"}>
+              Үзэх
               <ArrowUpRight className="pl-2" />
             </Button>
           </div>
