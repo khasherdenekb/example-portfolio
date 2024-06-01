@@ -24,7 +24,7 @@ const ProductDetail = () => {
                 Herbalife
               </h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                Бүтээгдхүүний нэр
+                Бүтээгдэхүүний нэр
               </h1>
               <p className="leading-relaxed">
                 Fam locavore kickstarter distillery. Mixtape chillwave tumeric

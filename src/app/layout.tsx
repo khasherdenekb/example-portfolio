@@ -7,10 +7,10 @@ import Navbar from "@/components/shared/navbar/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Portfolio example",
-  description: "Portfolio example",
-};
+// export const metadata: Metadata = {
+//   title: "Portfolio example",
+//   description: "Portfolio example",
+// };
 
 export default function RootLayout({
   children,
