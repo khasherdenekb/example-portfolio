@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 
 //TODO: url dran env gees avdag bolgoh
 export const metadata: Metadata = {
-  title: "Business journey",
-  description: "Business journey",
+  title: "Category",
+  description: "Category",
   openGraph: {
     images: [
       {
-        url: "/travel-banner1.jpg",
+        url: "/travel-banner2.jpg",
         width: 1200,
         height: 630,
-        alt: "business journey",
+        alt: "category",
       },
     ],
   },

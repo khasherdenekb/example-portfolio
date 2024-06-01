@@ -16,6 +16,17 @@ export const metadata: Metadata = {
     shortcut: "/logo.jpg",
     apple: "/logo.jpg",
   },
+  openGraph: {
+    images: [
+      {
+        url: "/travel-banner1.jpg",
+        width: 1200,
+        height: 630,
+        alt: "home",
+      },
+    ],
+  },
+  metadataBase: new URL("https://example-portfolio-nine.vercel.app"),
 };
 
 export default function RootLayout({
