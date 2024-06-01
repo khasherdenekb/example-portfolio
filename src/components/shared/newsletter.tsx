@@ -9,7 +9,7 @@ export const Newsletter = () => {
   };
 
   return (
-    <section id="newsletter">
+    <section className="py-10">
       <hr className="mx-auto" />
 
       <div className="container py-24 sm:py-32">

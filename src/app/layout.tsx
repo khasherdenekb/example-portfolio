@@ -4,6 +4,7 @@ import Footer from "@/components/shared/footer";
 import Navbar from "@/components/shared/navbar/navbar";
 import "@/css/globals.css";
 import "@/css/embla.css";
+import GoToTopButton from "@/components/custom/go-to-top";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,6 +42,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <GoToTopButton />
         </main>
       </body>
     </html>

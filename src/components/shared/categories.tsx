@@ -12,7 +12,7 @@ type CategoryProps = {
 
 const Categories = () => {
   return (
-    <div className="py-20">
+    <div className="py-10">
       <PageTitle title="Ангилал" />
       <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-4 gap-4">
         {categories?.map((category) => (
@@ -26,9 +26,9 @@ const Categories = () => {
 const Category = ({ category }: { category: CategoryProps }) => {
   return (
     <Link href={`/categories/${category.id}`} key={category.id}>
-      <div className="relative h-[200px] lg:h-[400px] z-[-1] shadow-lg rounded-lg bg-zinc-400">
+      <div className="group h-64 relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl cursor-pointer">
         <Image
-          className="object-cover rounded-lg p-[2px]"
+          className="h-64 w-full object-cover transition-all duration-300 ease-in-out hover:scale-105 rounded-lg p-[2px]"
           src={category.image}
           alt="product image"
           fill

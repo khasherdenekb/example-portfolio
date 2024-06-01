@@ -6,7 +6,7 @@ const BusinessJourney = () => {
   return (
     <div className="py-5">
       <PageTitle title={"Бизнесийн түүх"} />
-      <div className=" relative h-[200px] lg:h-[700px] w-full z-[-1] ">
+      <div className="relative h-[200px] lg:h-[700px] w-full z-[-1]">
         <Image
           src={"/travel-banner1.jpg"}
           fill

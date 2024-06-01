@@ -16,9 +16,23 @@ import {
 
 export function NavbarMenu() {
   return (
-    <NavigationMenu className="text-[#266431] !z-[999999] relative">
+    <NavigationMenu className="text-[#266431] z-[50] relative">
       <NavigationMenuList>
-        <NavigationMenuItem className="!z-[999999]">
+        <NavigationMenuItem>
+          <Link href="/information" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Мэдээлэл
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/links" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Холбоосууд
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem className="z-[50]">
           <NavigationMenuTrigger>Үндсэн цэс</NavigationMenuTrigger>
           <NavigationMenuContent className="!z-[9999]">
             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -78,13 +92,6 @@ export function NavbarMenu() {
               </ListItem>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/links" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Холбоосууд
-            </NavigationMenuLink>
-          </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/contact-us" legacyBehavior passHref>

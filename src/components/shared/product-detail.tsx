@@ -46,14 +46,16 @@ const ProductDetail = () => {
                     <Minus className="p-1" />
                   </Button>
                   <Input
+                    defaultValue={0}
                     type="number"
                     className="w-16"
-                    value={amount === 0 ? "" : amount}
+                    value={amount}
                     onChange={(e) =>
                       setAmount(
                         e.target.value === "" ? 0 : Number(e.target.value)
                       )
                     }
+                    min={0}
                   />
                   <Button
                     onClick={() => setAmount((prevState) => prevState + 1)}
@@ -66,7 +68,7 @@ const ProductDetail = () => {
               </div>
               <div className="flex justify-between">
                 <span className="title-font font-medium text-2xl text-gray-900">
-                  $50.00
+                  ₮50000.00
                 </span>
                 <Button>Авах</Button>
               </div>

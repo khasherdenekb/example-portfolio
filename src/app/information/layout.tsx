@@ -1,0 +1,26 @@
+import type { Metadata } from "next";
+
+//TODO: url dran env gees avdag bolgoh
+export const metadata: Metadata = {
+  title: "Information",
+  description: "Information",
+  openGraph: {
+    images: [
+      {
+        url: "/travel-banner3.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Information",
+      },
+    ],
+  },
+  metadataBase: new URL("https://example-portfolio-nine.vercel.app"),
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return <>{children}</>;
+}
