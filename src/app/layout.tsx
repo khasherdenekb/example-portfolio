@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@/css/globals.css";
-import "@/css/embla.css";
 import Footer from "@/components/shared/footer";
 import Navbar from "@/components/shared/navbar/navbar";
+import "@/css/globals.css";
+import "@/css/embla.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// export const metadata: Metadata = {
-//   title: "Portfolio example",
-//   description: "Portfolio example",
-// };
+// TODO: end logo orj ireh ystoi
+export const metadata: Metadata = {
+  title: "Portfolio example",
+  description: "Portfolio example",
+  icons: {
+    icon: "/logo.jpg",
+    shortcut: "/logo.jpg",
+    apple: "/logo.jpg",
+  },
+};
 
 export default function RootLayout({
   children,

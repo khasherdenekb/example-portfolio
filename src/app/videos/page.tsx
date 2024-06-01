@@ -26,8 +26,7 @@ const Videos = () => {
             <div className="lg:h-[650px] h-[280px]">
               <iframe
                 className="flex-1 w-full h-full"
-                src="https://www.youtube.com/embed/wCYR2tUQlaw?si=IB3_truxFna2OJXn"
-                frameBorder="0"
+                src="https://www.youtube.com/embed/XotLyFM0--U?si=c1TZM0aD3q5r7MUu"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
               />
