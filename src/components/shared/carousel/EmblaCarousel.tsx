@@ -32,8 +32,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
 
   return (
     <div className="embla pt-16">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
+      <div className="flex justify-end">
+        <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+        <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+      </div>
+      <div className="embla__viewport " ref={emblaRef}>
+        <div className="embla__container z-[-1] relative">
           {slides?.map((item, index) => (
             <div className="embla__slide embla__class-names" key={index}>
               <img
@@ -47,17 +51,13 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       </div>
 
       <div className="embla__controls">
-        <div className="embla__buttons">
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-        </div>
-        <div className="embla__dots">
+        <div className="flex flex-wrap">
           {scrollSnaps?.map((_, index) => (
             <Dot
               key={index}
-              className={"embla__dot".concat(
-                index === selectedIndex ? " text-green-700" : ""
-              )}
+              className={`${
+                index === selectedIndex && "text-red-500 font-black"
+              } cursor-pointer w-10 h-10`}
               onClick={() => onDotButtonClick(index)}
             />
           ))}

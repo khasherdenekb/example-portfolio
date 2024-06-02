@@ -16,8 +16,8 @@ import {
 
 export function NavbarMenu() {
   return (
-    <NavigationMenu className="text-[#266431] z-[50] relative">
-      <NavigationMenuList>
+    <NavigationMenu className="text-[#266431] !z-[9999] relative">
+      <NavigationMenuList className="!z-[9999] relative">
         <NavigationMenuItem>
           <Link href="/information" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>

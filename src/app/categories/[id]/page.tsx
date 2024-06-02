@@ -58,8 +58,8 @@ const CategoryPage = ({ params: { id } }: { params: { id: string } }) => {
           </PopoverTrigger>
           <PopoverContent className="w-[200px] p-0">
             <Command>
-              <CommandInput placeholder="Search framework..." />
-              <CommandEmpty>No framework found.</CommandEmpty>
+              <CommandInput placeholder="Ангилалаа сонгоно уу..." />
+              <CommandEmpty>Ангилалаа олдсонгүй.</CommandEmpty>
               <CommandGroup>
                 <CommandList>
                   {categories.map((category) => (

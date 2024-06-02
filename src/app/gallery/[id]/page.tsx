@@ -4,7 +4,7 @@ import React from "react";
 
 const GalleryPage = () => {
   return (
-    <>
+    <div>
       <EmblaCarousel slides={SLIDES} />
       <div className="mx-auto py-5">
         <div className="mb-8">
@@ -20,7 +20,7 @@ const GalleryPage = () => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

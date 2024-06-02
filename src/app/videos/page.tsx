@@ -29,6 +29,8 @@ const Videos = () => {
                 src="https://www.youtube.com/embed/XotLyFM0--U?si=c1TZM0aD3q5r7MUu"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
+                title="YouTube video player"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               />
             </div>
           </div>

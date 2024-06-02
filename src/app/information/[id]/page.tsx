@@ -2,88 +2,97 @@ import React from "react";
 
 const InformationDetail = () => {
   return (
-    <article className="prose prose-gray max-w-none dark:prose-invert py-10">
-      <figure className="mb-6 -mx-4 md:-mx-0">
-        <img
-          src="/travel-banner3.jpg"
-          alt="Blog cover image"
-          width={1200}
-          height={500}
-          className="aspect-[3/1] w-full rounded-lg object-cover"
-        />
-      </figure>
-      <div className="space-y-2 not-prose">
-        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
-          The Surprising Benefits of Unplugging: A Digital Detox Journey
-        </h1>
-        <div className="flex items-center gap-4 pt-5">
-          <div className="flex items-center gap-2">
-            <img
-              src="/travel-banner3.jpg"
-              alt="Author avatar"
-              width={40}
-              height={40}
-              className="h-10 w-10 rounded-full"
-            />
-            <div>
-              <div className="font-medium">Jane Doe</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">
-                May 15, 2023
-              </div>
-            </div>
-          </div>
+    <React.Fragment>
+      <section className="w-full pt-12">
+        <div>
+          <img
+            src="/travel-banner3.jpg"
+            alt="Hero Image"
+            className="mx-auto rounded-lg aspect-[2/1] object-cover w-full h-[450px]"
+          />
         </div>
-      </div>
-      <div className="pt-5">
-        <p>
-          In today's fast-paced, technology-driven world, it's easy to feel
-          constantly connected and overwhelmed. However, the surprising benefits
-          of unplugging and embracing a digital detox can have a profound impact
-          on our well-being. In this blog post, we'll explore the transformative
-          power of disconnecting from our devices and rediscovering the joys of
-          being present.
-        </p>
-        <p>
-          Imagine a world where you're not constantly checking your phone,
-          scrolling through social media, or responding to endless
-          notifications. A world where you can truly immerse yourself in the
-          moment, without the distractions of the digital realm. This is the
-          essence of a digital detox – a deliberate and intentional break from
-          the constant barrage of digital stimuli.
-        </p>
-        <p>
-          When we unplug, we create space for deeper connections, enhanced
-          creativity, and a renewed sense of mindfulness. Without the constant
-          need to document every experience or share it online, we can fully
-          engage with our surroundings, our loved ones, and ourselves. This
-          shift in perspective can lead to a greater appreciation for the
-          present moment and a renewed sense of well-being.
-        </p>
-        <p>
-          Moreover, a digital detox can have tangible benefits for our mental
-          and physical health. Studies have shown that reducing screen time can
-          lead to improved sleep quality, reduced stress and anxiety, and even
-          increased productivity. By stepping away from the digital world, we
-          give our brains the opportunity to rest, recharge, and refocus on the
-          things that truly matter.
-        </p>
-        <p>
-          Of course, the idea of unplugging can be daunting, especially in a
-          world that seems to demand our constant attention. But the rewards of
-          a digital detox are well worth the effort. By setting boundaries and
-          carving out time for ourselves, we can reclaim our lives and
-          rediscover the joys of being truly present.
-        </p>
-        <p>
-          So, the next time you feel the urge to reach for your phone or laptop,
-          consider taking a step back and embracing the power of unplugging.
-          Whether it's a weekend getaway, a technology-free evening, or a simple
-          mindfulness practice, the benefits of a digital detox can be truly
-          transformative. Embrace the silence, savor the moments, and let the
-          digital world fade away – if only for a little while.
-        </p>
-      </div>
-    </article>
+      </section>
+      <article className="py-12 md:py-16 lg:py-24">
+        <div className="mx-auto max-w-4xl">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            The Future of Web Development: Embracing the Power of Tailwind CSS
+          </h1>
+          <div className="flex gap-2 items-center text-sm text-muted-foreground pt-2">
+            <img
+              src="/travel-banner1.jpg"
+              width={32}
+              height={32}
+              alt="Author Avatar"
+              className="h-8 w-8 rounded-full"
+            />
+            <p>John Doe</p>
+            <p>|</p>
+            <p>May 15, 2024</p>
+          </div>
+          <section className="mt-8">
+            <h2 className="text-2xl font-bold tracking-tight">
+              The Rise of Tailwind CSS
+            </h2>
+            <p>
+              In the ever-evolving landscape of web development, one tool has
+              emerged as a game-changer: Tailwind CSS. This utility-first CSS
+              framework has taken the industry by storm, transforming the way
+              developers approach styling and building user interfaces.
+            </p>
+            <p>
+              Tailwind CSS offers a unique approach to CSS, moving away from the
+              traditional class-based styling and embracing a more functional
+              approach. By providing a comprehensive set of pre-defined utility
+              classes, Tailwind empowers developers to quickly and efficiently
+              style their components, without the need for complex CSS
+              architectures or lengthy class names.
+            </p>
+          </section>
+          <section className="mt-8">
+            <h2 className="text-2xl font-bold tracking-tight">
+              The Benefits of Tailwind CSS
+            </h2>
+            <p>
+              One of the primary advantages of Tailwind CSS is its ability to
+              promote consistency and maintainability in your codebase. By
+              leveraging a standardized set of utility classes, developers can
+              ensure that their UI elements adhere to a unified design system,
+              reducing the risk of inconsistencies and making it easier to scale
+              and iterate on the project.
+            </p>
+            <p>
+              Moreover, Tailwind CSS encourages a more modular and
+              component-driven approach to web development. Instead of relying
+              on complex CSS selectors and cascading rules, developers can focus
+              on building reusable components that encapsulate both the
+              structure and the styling, making the codebase more organized and
+              easier to reason about.
+            </p>
+          </section>
+          <section className="mt-8">
+            <h2 className="text-2xl font-bold tracking-tight">
+              Embracing the Future of Web Development
+            </h2>
+            <p>
+              As the web development landscape continues to evolve, the adoption
+              of Tailwind CSS is a clear indicator of the industry's shift
+              towards more efficient and scalable styling solutions. By
+              embracing the power of Tailwind, developers can unlock a new level
+              of productivity, creativity, and maintainability in their
+              projects, paving the way for the future of web development.
+            </p>
+            <p>
+              Whether you're a seasoned developer or just starting your journey
+              in the world of web development, exploring the capabilities of
+              Tailwind CSS can be a transformative experience. By leveraging
+              this powerful tool, you can unlock new possibilities, streamline
+              your workflow, and create stunning user experiences that stand the
+              test of time.
+            </p>
+          </section>
+        </div>
+      </article>
+    </React.Fragment>
   );
 };
 

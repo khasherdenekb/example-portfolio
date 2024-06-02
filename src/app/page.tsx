@@ -5,6 +5,7 @@ import { Products } from "@/components/shared/products";
 import { dummyData, SLIDES, SLIDES2 } from "@/data/dummyData";
 import EmblaCarousel from "@/components/shared/carousel/EmblaCarousel";
 import Categories from "@/components/shared/categories";
+import HomeVideo from "@/components/shared/home-video";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <EmblaCarousel slides={SLIDES} />
       <Categories />
       <Products products={dummyData} />
+      <HomeVideo />
       <EmblaCarousel slides={SLIDES2} />
       <Newsletter />
     </div>
