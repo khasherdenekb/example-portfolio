@@ -4,8 +4,6 @@ export type TProduct = {
   categories: { title: string }[];
   title: string;
   description: string;
-  price: number;
-  isAvailable: boolean;
 };
 
 export const dummyData: TProduct[] = [
@@ -17,8 +15,6 @@ export const dummyData: TProduct[] = [
     categories: [{ title: "Category 1" }],
     title: "Product 1",
     description: "Description of Product 1",
-    price: 50,
-    isAvailable: true,
   },
   {
     id: 2,
@@ -28,8 +24,6 @@ export const dummyData: TProduct[] = [
     categories: [{ title: "Category 2" }],
     title: "Product 2",
     description: "Description of Product 2",
-    price: 60,
-    isAvailable: true,
   },
   {
     id: 3,
@@ -39,8 +33,6 @@ export const dummyData: TProduct[] = [
     categories: [{ title: "Category 1" }],
     title: "Product 1",
     description: "Description of Product 1",
-    price: 50,
-    isAvailable: true,
   },
   {
     id: 4,
@@ -50,8 +42,6 @@ export const dummyData: TProduct[] = [
     categories: [{ title: "Category 2" }],
     title: "Product 2",
     description: "Description of Product 2",
-    price: 60,
-    isAvailable: true,
   },
   {
     id: 5,
@@ -61,8 +51,6 @@ export const dummyData: TProduct[] = [
     categories: [{ title: "Category 1" }],
     title: "Product 1",
     description: "Description of Product 1",
-    price: 50,
-    isAvailable: true,
   },
   {
     id: 6,
@@ -72,8 +60,6 @@ export const dummyData: TProduct[] = [
     categories: [{ title: "Category 2" }],
     title: "Product 2",
     description: "Description of Product 2",
-    price: 60,
-    isAvailable: true,
   },
 ];
 
@@ -217,7 +203,7 @@ export const categories = [
   },
 ];
 
-export const informationDetails = [
+export const blogDetails = [
   {
     id: 1,
     image: "/travel-banner3.jpg",

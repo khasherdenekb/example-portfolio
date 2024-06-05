@@ -1,7 +1,7 @@
-import { informationDetails } from "@/data/dummyData";
+import { blogDetails } from "@/data/dummyData";
 import Link from "next/link";
 
-type InformationFeatureDetailProps = {
+type BlogFeatureDetailProps = {
   id: number | string;
   title: string;
   description: string;
@@ -102,8 +102,8 @@ const Information = () => {
             More from the blog
           </h2>
           <div className="grid gap-4">
-            {informationDetails?.map((info) => (
-              <InformationFeatureDetail info={info} />
+            {blogDetails?.map((blog) => (
+              <BlogFeatureDetail blog={blog} />
             ))}
           </div>
         </div>
@@ -112,28 +112,24 @@ const Information = () => {
   );
 };
 
-const InformationFeatureDetail = ({
-  info,
-}: {
-  info: InformationFeatureDetailProps;
-}) => {
+const BlogFeatureDetail = ({ blog }: { blog: BlogFeatureDetailProps }) => {
   return (
     <Link
-      href={`/information/${info.id}`}
+      href={`/blogs/${blog.id}`}
       className="grid grid-cols-[120px_1fr] gap-4"
       prefetch={false}
     >
       <img
-        src={info.image}
+        src={blog.image}
         alt="Blog post thumbnail"
         width={120}
         height={80}
         className="aspect-[3/2] rounded-lg object-cover"
       />
       <div className="space-y-1">
-        <h3 className="text-lg font-medium tracking-tight">{info.title}</h3>
+        <h3 className="text-lg font-medium tracking-tight">{blog.title}</h3>
         <p className="line-clamp-2 text-gray-500 dark:text-gray-400">
-          {info.description}
+          {blog.description}
         </p>
       </div>
     </Link>

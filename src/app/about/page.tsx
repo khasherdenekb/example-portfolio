@@ -1,22 +1,17 @@
+import { FacebookIcon2 } from "@/components/custom/icons";
 import { Button } from "@/components/ui/button";
-import {
-  FacebookIcon,
-  LinkedinIcon,
-  Mail,
-  MapPin,
-  Phone,
-  YoutubeIcon,
-} from "lucide-react";
+import { LinkedinIcon, Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
 
 const ContactUs = () => {
   return (
     <section className="bg-white dark:bg-gray-900">
-      <div className="container px-6 py-12 mx-auto">
+      <div className="px-6 py-12 mx-auto">
         <div className="lg:flex lg:items-center lg:-mx-6">
           <div className="lg:w-1/2 lg:mx-6">
-            <h1 className="text-2xl font-semibold text-gray-800 dark:text-white lg:text-3xl">
-              Холбоо барьж дэлгэрэнгүй <br /> мэдээлэл аваарай
+            <h1 className="text-xl font-semibold text-gray-800 dark:text-white lg:text-3xl">
+              Холбоо барьж дэлгэрэнгүй
+              <br className="hidden lg:block" /> мэдээлэл аваарай
             </h1>
 
             <div className="mt-6 space-y-8 md:mt-8">
@@ -51,9 +46,12 @@ const ContactUs = () => {
               </h3>
 
               <div className="flex pt-4 -px-1.5 gap-3 ">
-                <FacebookIcon className=" text-muted-foreground cursor-pointer h-6 w-6" />
-                <LinkedinIcon className=" text-muted-foreground cursor-pointer h-6 w-6" />
-                <YoutubeIcon className=" text-muted-foreground cursor-pointer h-6 w-6" />
+                <Button variant={"outline"} size={"icon"}>
+                  <LinkedinIcon className=" text-muted-foreground cursor-pointer h-5 w-5" />
+                </Button>
+                <Button variant={"outline"} size={"icon"}>
+                  <FacebookIcon2 />
+                </Button>
               </div>
             </div>
           </div>

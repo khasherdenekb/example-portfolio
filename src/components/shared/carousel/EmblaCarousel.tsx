@@ -20,8 +20,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   const { slides, options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [ClassNames()]);
 
-  const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(emblaApi);
+  const { selectedIndex } = useDotButton(emblaApi);
 
   const {
     prevBtnDisabled,
@@ -31,10 +30,15 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   } = usePrevNextButtons(emblaApi);
 
   return (
-    <div className="embla pt-16">
-      <div className="flex justify-end">
-        <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-        <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+    <div className="embla py-16">
+      <div className="flex justify-between">
+        <div className="flex">
+          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+        </div>
+        <div className="flex items-center text-muted-foreground font-bold tracking-normal text-xl">
+          {selectedIndex + 1} / {slides.length}
+        </div>
       </div>
       <div className="embla__viewport " ref={emblaRef}>
         <div className="embla__container z-[-1] relative">
@@ -46,20 +50,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 alt={item + index}
               />
             </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="embla__controls">
-        <div className="flex flex-wrap">
-          {scrollSnaps?.map((_, index) => (
-            <Dot
-              key={index}
-              className={`${
-                index === selectedIndex && "text-red-500 font-black"
-              } cursor-pointer w-10 h-10`}
-              onClick={() => onDotButtonClick(index)}
-            />
           ))}
         </div>
       </div>

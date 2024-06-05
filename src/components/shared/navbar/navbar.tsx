@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { NavbarMenu } from "./navbar-menu";
 import { NavbarMobile } from "./navbar-mobile";
-import { BriefcaseBusinessIcon } from "lucide-react";
+import { HomeIcon } from "lucide-react";
 
 const Navbar = () => {
   return (
@@ -10,9 +10,9 @@ const Navbar = () => {
       <aside>
         <Link href={"/"} className="flex gap-2 items-center">
           <h2 className="scroll-m-20 text-sm lg:text-xl font-semibold tracking-normal first:mt-0">
-            С.Баасанжав
+            С. Баасанжав
           </h2>
-          <BriefcaseBusinessIcon className="text-muted-foreground w-5 h-5" />
+          <HomeIcon className="text-muted-foreground w-5 h-5" />
         </Link>
       </aside>
       <aside className="flex lg:hidden">

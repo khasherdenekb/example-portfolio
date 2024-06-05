@@ -20,10 +20,6 @@ export const Products = ({ products }: { products: TProduct[] }) => {
 };
 
 export const Product = ({ product }: { product: TProduct }) => {
-  function Price() {
-    return <Badge className="bg-[#2A6F37]">₮{product?.price}</Badge>;
-  }
-
   return (
     <Link href={`/product/${product.id}`} key={product.id}>
       <Card className="h-full flex flex-col">
@@ -43,13 +39,6 @@ export const Product = ({ product }: { product: TProduct }) => {
           </div>
           <div className="flex justify-between items-end mt-4">
             <div className="flex gap-2 h-8">
-              {product?.isAvailable ? (
-                <Price />
-              ) : (
-                <Badge className="bg-[#2A6F37] text-white" variant="secondary">
-                  дууссан
-                </Badge>
-              )}
               <Badge variant="default">{product.categories[0].title}</Badge>
             </div>
             <Button className="bg-[#2A6F37]" size={"sm"}>
