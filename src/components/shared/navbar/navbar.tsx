@@ -6,13 +6,13 @@ import { HomeIcon } from "lucide-react";
 
 const Navbar = () => {
   return (
-    <header className="py-4 backdrop-blur-lg flex items-center border-b justify-between">
+    <header className="right-0 flex items-center justify-between py-4 border-b">
       <aside>
-        <Link href={"/"} className="flex gap-2 items-center">
-          <h2 className="scroll-m-20 text-sm lg:text-xl font-semibold tracking-normal first:mt-0">
+        <Link href={"/"} className="flex items-center gap-2">
+          <h2 className="text-sm font-semibold tracking-normal scroll-m-20 lg:text-xl first:mt-0">
             С. Баасанжав
           </h2>
-          <HomeIcon className="text-muted-foreground w-5 h-5" />
+          <HomeIcon className="w-5 h-5 text-muted-foreground" />
         </Link>
       </aside>
       <aside className="flex lg:hidden">

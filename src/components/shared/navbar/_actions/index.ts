@@ -36,7 +36,7 @@ export function getMenuData() {
   );
 
   return {
-    menuData: data?.response?.header || [],
+    menuData: data?.response?.footer || [],
     isLoading,
     isError: error,
   };
