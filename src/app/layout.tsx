@@ -37,12 +37,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <main className="container">
+      <body className={`${inter.className} bg-slate-50`}>
+        <main className="container ">
           <Navbar />
           {children}
-          <Footer />
           <GoToTopButton />
+          <Footer />
         </main>
       </body>
     </html>

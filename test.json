@@ -1,0 +1,47 @@
+{
+  "banner": {
+    "image": "",
+    "title": "",
+    "description": "",
+    "file": ""
+  },
+  "slider": [
+    [
+      {
+        "image": "",
+        "id": ""
+      },
+      {
+        "image": "",
+        "id": ""
+      }
+    ],
+    [
+      {
+        "image": "",
+        "id": ""
+      },
+      {
+        "image": "",
+        "id": ""
+      }
+    ]
+  ],
+  "category": {
+    "image": "",
+    "title": "",
+    "id": ""
+  },
+  "products": [
+    {
+      "image": "",
+      "title": "",
+      "description": "",
+      "category": "",
+      "id": ""
+    }
+  ],
+  "video": {
+    "file": ""
+  }
+}

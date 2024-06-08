@@ -31,7 +31,7 @@ const GoToTopButton = () => {
   return (
     <Button
       onClick={scrollToTop}
-      className={`fixed bottom-4 right-4 p-3 rounded-full text-white transition-opacity w-12 h-12 ${
+      className={`fixed bottom-5 right-7 p-3 rounded-full text-white transition-opacity w-12 h-12 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
       size={"icon"}

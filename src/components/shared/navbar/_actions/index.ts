@@ -1,28 +1,22 @@
 import { API_URL, BASIC_AUTH_PW, BASIC_AUTH_USER } from "@/lib/constants";
 import useSWR from "swr";
 
-export interface MenuItem {
+export type MenuItem = {
   id: number;
-  parent_id: number | null;
-  name: string;
-  name_eng: string;
-  url: string;
-  url_en: string;
-  layout: string;
+  title: string;
   type: string;
-  type_id: string | null;
-  status: string;
-  created_at: string;
-  updated_at: string;
-  menu?: MenuItem[];
-}
+  url: string;
+  module: string;
+  module_id: string | null;
+  subMenu: MenuItem[];
+};
 
-interface MenuData {
+type MenuData = {
   response: {
-    main: MenuItem[];
+    header: MenuItem[];
     footer: MenuItem[];
   };
-}
+};
 
 const fetcher = (url: string) => {
   const token = Buffer.from(`${BASIC_AUTH_USER}:${BASIC_AUTH_PW}`).toString(
@@ -42,7 +36,7 @@ export function getMenuData() {
   );
 
   return {
-    menuData: data?.response,
+    menuData: data?.response?.header || [],
     isLoading,
     isError: error,
   };

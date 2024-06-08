@@ -15,7 +15,7 @@ const ProductDetail = () => {
             />
             <CardContent className="lg:w-1/2 w-full flex justify-center flex-col">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                Herbalife
+                Category
               </h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
                 Бүтээгдэхүүний нэр

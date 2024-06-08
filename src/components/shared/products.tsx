@@ -10,7 +10,7 @@ export const Products = ({ products }: { products: TProduct[] }) => {
   return (
     <div className="py-10">
       <PageTitle title="Онцлох бүтээгдэхүүнүүд" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4 pt-5">
         {products?.map((product) => (
           <Product product={product} key={product.id} />
         ))}
@@ -23,7 +23,7 @@ export const Product = ({ product }: { product: TProduct }) => {
   return (
     <Link href={`/product/${product.id}`} key={product.id}>
       <Card className="h-full flex flex-col">
-        <CardHeader className="p-0 w-full h-min">
+        <CardHeader className="p-3 w-full h-min">
           <img
             className="h-64 w-full object-cover transition-all duration-300 ease-in-out hover:scale-105 "
             src={product?.images?.[0]}
@@ -34,7 +34,7 @@ export const Product = ({ product }: { product: TProduct }) => {
           <div>
             <h2 className="mt-2">{product.title}</h2>
             <p className="text-xs text-neutral-500 text-justify">
-              {product.description}
+              {/* {product.description} */}
             </p>
           </div>
           <div className="flex justify-between items-end mt-4">

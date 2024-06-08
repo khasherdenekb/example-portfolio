@@ -9,9 +9,7 @@ export const Newsletter = () => {
   };
 
   return (
-    <section className="py-10">
-      <hr className="mx-auto" />
-
+    <>
       <div className="container py-24 sm:py-32">
         <h3 className="text-center text-4xl md:text-5xl font-bold">
           Та имэйлээ үлдээж бидэнтэй{" "}
@@ -35,6 +33,6 @@ export const Newsletter = () => {
           <Button className="bg-[#2A6F37]">Subscribe</Button>
         </form>
       </div>
-    </section>
+    </>
   );
 };

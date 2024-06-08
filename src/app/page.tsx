@@ -14,9 +14,8 @@ const Home = () => {
       <EmblaCarousel slides={SLIDES} />
       <Categories />
       <Products products={dummyData} />
-      <HomeVideo />
+      <HomeVideo videoSrc="https://www.youtube.com/embed/24Wr92ds2WI?si=-8LNp_CnEQyCRXbM" />
       <EmblaCarousel slides={SLIDES2} />
-      <Newsletter />
     </div>
   );
 };
