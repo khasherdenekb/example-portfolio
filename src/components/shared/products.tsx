@@ -1,3 +1,4 @@
+'use client'
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { TProduct } from "@/data/dummyData";
@@ -5,28 +6,25 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
 import PageTitle from "../custom/page-title";
+import { getBannerData } from "../_actions";
 
-export const Products = ({
-  products,
-  isLoading,
-  isError,
-}: {
-  products: TProduct[];
-  isLoading: boolean;
-  isError: boolean;
-}) => {
+export const Products = ({ type }: { type: string }) => {
+  const { productsData, isLoading, isError } = getBannerData();
+  const products =
+    type == "header" ? productsData?.header : productsData?.footer;
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   if (isError) {
-    return <div>Error loading sliders</div>;
+    return <div>Error loading categories</div>;
   }
+
   return (
     <div className="py-10">
       <PageTitle title="Онцлох бүтээгдэхүүнүүд" />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4 pt-5">
-        {products?.map((product) => (
+        {products?.map((product: TProduct) => (
           <Product product={product} key={product.id} />
         ))}
       </div>

@@ -1,24 +1,17 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { categories } from "@/data/dummyData";
 import Link from "next/link";
 import PageTitle from "../custom/page-title";
+import { getBannerData } from "../_actions";
 type CategoryProps = {
   id: number | string;
   title: string;
   image: string;
 };
 
-const Categories = ({
-  isError,
-  isLoading,
-  categories,
-}: {
-  isError: boolean;
-  isLoading: boolean;
-  categories: CategoryProps[];
-}) => {
+const Categories = () => {
+  const { categoryData, isLoading, isError } = getBannerData();
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -30,7 +23,7 @@ const Categories = ({
     <div className="py-10">
       <PageTitle title="Ангилал" />
       <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-4 gap-4">
-        {categories?.map((category: CategoryProps) => (
+        {categoryData?.map((category: CategoryProps) => (
           <Category category={category} key={category?.id} />
         ))}
       </div>

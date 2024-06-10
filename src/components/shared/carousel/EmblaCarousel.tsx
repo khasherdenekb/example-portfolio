@@ -13,12 +13,10 @@ import { useDotButton } from "./EmblaCarouselDotButton";
 type PropType = {
   slides: [];
   options?: EmblaOptionsType;
-  isLoading: boolean;
-  isError: boolean;
 };
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
-  const { options, slides, isLoading, isError } = props;
+  const { options, slides} = props;
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [ClassNames()]);
 
@@ -30,13 +28,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError) {
-    return <div>Error loading sliders</div>;
-  }
 
   return (
     <div className="embla py-16">
