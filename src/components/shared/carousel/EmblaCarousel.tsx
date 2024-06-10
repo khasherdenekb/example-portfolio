@@ -11,7 +11,7 @@ import {
 import { useDotButton } from "./EmblaCarouselDotButton";
 
 type PropType = {
-  slides: [];
+  slides: string[];
   options?: EmblaOptionsType;
 };
 
