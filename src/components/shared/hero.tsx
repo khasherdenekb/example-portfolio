@@ -58,7 +58,7 @@ const Hero = () => {
 
               <div className="pt-2 text-center">
                 <Button
-                  onClick={() => router.push(data?.label_link)}
+                  onClick={() => router.push(data?.url)}
                   className="bg-[#2A6F37] w-48 md:w-96"
                   size={"lg"}
                 >
