@@ -1,7 +1,7 @@
 export type TProduct = {
   id: number;
   images: string[];
-  categories: { title: string }[];
+  category_name: string;
   title: string;
   description: string;
 };
@@ -12,7 +12,7 @@ export const dummyData: TProduct[] = [
     images: [
       "https://www.herbalife.com/dmassets/market-reusable-assets/amer/united-states/images/canister/pc-3110-us.png:pdp-w875h783?fmt=webp-alpha",
     ],
-    categories: [{ title: "Category 1" }],
+    category_name: "Category 1" ,
     title: "Product 1",
     description: "Description of Product 1",
   },
@@ -21,7 +21,7 @@ export const dummyData: TProduct[] = [
     images: [
       "https://www.herbalife.com/dmassets/market-reusable-assets/amer/united-states/images/canister/pc-3145-us.png:pdp-w875h783?fmt=webp-alpha",
     ],
-    categories: [{ title: "Category 2" }],
+    category_name: "Category 2",
     title: "Product 2",
     description: "Description of Product 2",
   },
@@ -30,7 +30,7 @@ export const dummyData: TProduct[] = [
     images: [
       "https://www.herbalife.com/dmassets/market-reusable-assets/amer/united-states/images/canister/pc-3110-us.png:pdp-w875h783?fmt=webp-alpha",
     ],
-    categories: [{ title: "Category 1" }],
+    category_name: "Category 2",
     title: "Product 1",
     description: "Description of Product 1",
   },
@@ -39,7 +39,7 @@ export const dummyData: TProduct[] = [
     images: [
       "https://www.herbalife.com/dmassets/market-reusable-assets/amer/united-states/images/canister/pc-3145-us.png:pdp-w875h783?fmt=webp-alpha",
     ],
-    categories: [{ title: "Category 2" }],
+    category_name: "Category 2",
     title: "Product 2",
     description: "Description of Product 2",
   },
@@ -48,7 +48,7 @@ export const dummyData: TProduct[] = [
     images: [
       "https://www.herbalife.com/dmassets/market-reusable-assets/amer/united-states/images/canister/pc-3110-us.png:pdp-w875h783?fmt=webp-alpha",
     ],
-    categories: [{ title: "Category 1" }],
+    category_name: "Category 1",
     title: "Product 1",
     description: "Description of Product 1",
   },
@@ -57,7 +57,7 @@ export const dummyData: TProduct[] = [
     images: [
       "https://www.herbalife.com/dmassets/market-reusable-assets/amer/united-states/images/canister/pc-3145-us.png:pdp-w875h783?fmt=webp-alpha",
     ],
-    categories: [{ title: "Category 2" }],
+    category_name: "Category 2",
     title: "Product 2",
     description: "Description of Product 2",
   },

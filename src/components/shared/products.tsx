@@ -6,7 +6,22 @@ import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
 import PageTitle from "../custom/page-title";
 
-export const Products = ({ products }: { products: TProduct[] }) => {
+export const Products = ({
+  products,
+  isLoading,
+  isError,
+}: {
+  products: TProduct[];
+  isLoading: boolean;
+  isError: boolean;
+}) => {
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error loading sliders</div>;
+  }
   return (
     <div className="py-10">
       <PageTitle title="Онцлох бүтээгдэхүүнүүд" />
@@ -39,7 +54,7 @@ export const Product = ({ product }: { product: TProduct }) => {
           </div>
           <div className="flex justify-between items-end mt-4">
             <div className="flex gap-2 h-8">
-              <Badge variant="default">{product.categories[0].title}</Badge>
+              <Badge variant="default">{product.category_name}</Badge>
             </div>
             <Button className="bg-[#2A6F37]" size={"sm"}>
               Үзэх

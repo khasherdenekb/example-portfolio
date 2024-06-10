@@ -21,6 +21,10 @@ export function getBannerData() {
 
   return {
     bannerData: data?.response?.banner || [],
+    sliderData: data?.response?.slider || [],
+    categoryData: data?.response?.category || [],
+    productsData: data?.response?.products || [],
+    videosData: data?.response?.video || [],
     isLoading,
     isError: error,
   };
