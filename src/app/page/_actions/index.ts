@@ -5,7 +5,6 @@ const fetcher = async (url: string, slug: string) => {
   const token = Buffer.from(`${BASIC_AUTH_USER}:${BASIC_AUTH_PW}`).toString(
     "base64"
   );
-  console.log(slug, "slug");
   return await fetch(url, {
     method: "POST",
     headers: {
