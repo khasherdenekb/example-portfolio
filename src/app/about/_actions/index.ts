@@ -1,7 +1,7 @@
 import { API_URL, BASIC_AUTH_PW, BASIC_AUTH_USER } from "@/lib/constants";
 import useSWR from "swr";
 
-const fetcher = async (url: string, slug: string) => {
+const fetcher = async (url: string) => {
   const token = Buffer.from(`${BASIC_AUTH_USER}:${BASIC_AUTH_PW}`).toString(
     "base64"
   );
@@ -11,16 +11,12 @@ const fetcher = async (url: string, slug: string) => {
       Authorization: `Basic ${token}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ slug }),
+    body: JSON.stringify({ slug: "about" }),
   }).then((res) => res.json());
 };
 
-export function getAbout(slug: string) {
-  //TODO: getPages/about
-  const { data, error } = useSWR(
-    slug ? [`${API_URL}/api/v1/menu/getPages`, slug] : null,
-    ([url, slug]) => fetcher(url, slug)
-  );
+export function getAbout() {
+  const { data, error } = useSWR(`${API_URL}/api/v1/menu/getPages`, fetcher);
 
   return {
     data: data?.response || {},
