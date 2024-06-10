@@ -2,6 +2,13 @@
 import { useParams } from "next/navigation";
 import React from "react";
 import { getAbout } from "../_actions";
+import PageTitle from "@/components/custom/page-title";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+} from "@/components/ui/card";
 
 const AboutSlug: React.FC = () => {
   const { slug } = useParams();
@@ -11,12 +18,19 @@ const AboutSlug: React.FC = () => {
   if (isError) return <>Error...</>;
 
   return (
-    <div>
-      <h1>{data.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: data.description }} />
-      <img src={data.image} alt={data.title} />
-      <p>{data.date}</p>
-    </div>
+    <Card className="my-5">
+      <CardContent>
+        <CardDescription className="pt-5 pb-3">
+          <PageTitle title={data.title} />
+        </CardDescription>
+        <div
+          className="py-2"
+          dangerouslySetInnerHTML={{ __html: data.description }}
+        />
+        <img src={data.image} alt={data.title} />
+        <p>{data.date}</p>
+      </CardContent>
+    </Card>
   );
 };
 
