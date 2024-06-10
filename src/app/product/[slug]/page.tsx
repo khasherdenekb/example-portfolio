@@ -1,7 +1,7 @@
 import ProductDetail from "@/components/shared/product-detail";
 import React from "react";
 
-const page = () => {
+const ProductSlug = () => {
   return (
     <div>
       <ProductDetail />
@@ -9,4 +9,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ProductSlug;

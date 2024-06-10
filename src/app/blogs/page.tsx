@@ -1,5 +1,7 @@
+"use client";
 import { blogDetails } from "@/data/dummyData";
 import Link from "next/link";
+import { getBlogs } from "./_actions";
 
 type BlogFeatureDetailProps = {
   id: number | string;
@@ -11,6 +13,10 @@ type BlogFeatureDetailProps = {
 // TODO: hamgiin ehend haragdah ni pin blog
 // TODO: side blog ni feature blog
 const Information = () => {
+  const { data, isError, isLoading } = getBlogs();
+
+  console.log(data, "DATA");
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 px-4 md:px-6 py-12 md:py-16">
       <article className="prose prose-gray max-w-none dark:prose-invert">
