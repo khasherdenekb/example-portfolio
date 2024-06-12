@@ -1,4 +1,3 @@
-//? HOME ACTION
 import { API_URL, BASIC_AUTH_PW, BASIC_AUTH_USER } from "@/lib/constants";
 import useSWR from "swr";
 
@@ -19,9 +18,11 @@ export function getBannerData() {
     fetcher
   );
 
+  // Slider data заавал хоосон string initial array-тай байна
+  // do not change
   return {
     bannerData: data?.response?.banner || [],
-    sliderData: data?.response?.slider || [],
+    sliderData: data?.response?.slider || [""],
     categoryData: data?.response?.category || [],
     productsData: data?.response?.products || [],
     videosData: data?.response?.video || [],

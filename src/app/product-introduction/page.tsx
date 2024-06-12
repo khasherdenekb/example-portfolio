@@ -1,4 +1,4 @@
-import PageTitle from "@/components/custom/page-title";
+import { PageTitle } from "@/components/custom/page-title";
 import Image from "next/image";
 import React from "react";
 

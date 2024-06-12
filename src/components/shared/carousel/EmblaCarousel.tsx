@@ -9,14 +9,16 @@ import {
   usePrevNextButtons,
 } from "./EmblaCarouselArrowButtons";
 import { useDotButton } from "./EmblaCarouselDotButton";
+import { BlurImage } from "@/components/custom/blur-image";
 
 type PropType = {
   slides: string[];
   options?: EmblaOptionsType;
+  isLoading: boolean;
 };
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
-  const { options, slides} = props;
+  const { options, slides, isLoading } = props;
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [ClassNames()]);
 
@@ -27,7 +29,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     onPrevButtonClick,
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
-
 
   return (
     <div className="embla py-16">
@@ -44,10 +45,11 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         <div className="embla__container z-[-1] relative">
           {slides?.map((item: string, index: React.Key) => (
             <div className="embla__slide embla__class-names" key={index}>
-              <img
+              <BlurImage
                 className="embla__slide__img"
                 src={item}
                 alt={item + index}
+                isLoading={isLoading}
               />
             </div>
           ))}

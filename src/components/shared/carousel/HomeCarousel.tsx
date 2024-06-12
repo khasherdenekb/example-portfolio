@@ -9,18 +9,14 @@ const HomeCaraousel = ({ type }: { type: string }) => {
     type == "header"
       ? sliderData?.header?.[0]?.images
       : sliderData?.footer?.[0]?.images;
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   if (isError) {
     return <div>Error loading sliders</div>;
   }
 
- 
   return (
     <div className="p-0">
-      <EmblaCarousel slides={sliders} />
+      <EmblaCarousel slides={sliders || [""]} isLoading={isLoading} />
     </div>
   );
 };

@@ -16,13 +16,14 @@ const fetcher = async (url: string, slug: string) => {
 };
 
 export function getAbout(slug: string) {
-  const { data, error } = useSWR(`${API_URL}/api/v1/menu/getPages`, (url) =>
-    fetcher(url, slug)
+  const { data, error, isLoading } = useSWR(
+    `${API_URL}/api/v1/menu/getPages`,
+    (url) => fetcher(url, slug)
   );
 
   return {
     data: data?.response || {},
-    isLoading: !error && !data,
+    isLoading,
     isError: error,
   };
 }

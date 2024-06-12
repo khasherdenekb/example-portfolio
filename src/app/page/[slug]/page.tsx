@@ -1,33 +1,25 @@
 "use client";
 import { useParams } from "next/navigation";
-import React from "react";
 import { getAbout } from "../_actions";
-import PageTitle from "@/components/custom/page-title";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-} from "@/components/ui/card";
+import { PageTitle } from "@/components/custom/page-title";
+import { Card, CardContent } from "@/components/ui/card";
+import { BlurImage } from "@/components/custom/blur-image";
 
-const AboutSlug: React.FC = () => {
+const AboutSlug = () => {
   const { slug } = useParams();
   const { data, isError, isLoading } = getAbout(slug?.toString());
 
-  if (isLoading) return <>loading...</>;
   if (isError) return <>Error...</>;
 
   return (
     <Card className="my-5">
       <CardContent>
-        <CardDescription className="pt-5 pb-3">
-          <PageTitle title={data.title} />
-        </CardDescription>
+        <PageTitle className="py-5" title={data.title} />
         <div
-          className="py-2"
+          className="pb-2"
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
-        <img src={data.image} alt={data.title} />
+        <BlurImage isLoading={isLoading} src={data.image} alt={data.title} />
         <p>{data.date}</p>
       </CardContent>
     </Card>
