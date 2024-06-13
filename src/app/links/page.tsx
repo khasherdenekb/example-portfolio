@@ -9,6 +9,7 @@ type LinkCategoryProps = {
   id: number | string;
   title: string;
   image: string;
+  url: string;
 };
 
 const Links = () => {
@@ -40,8 +41,8 @@ const Links = () => {
       </section>
       <section className="py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:gap-10">
-          {linksData?.map((links: LinkCategoryProps) => (
-            <LinkImages links={links} isLoading={isLoading} />
+          {linksData?.map((link: LinkCategoryProps) => (
+            <LinkImages link={link} isLoading={isLoading} />
           ))}
         </div>
       </section>
@@ -50,23 +51,23 @@ const Links = () => {
 };
 
 const LinkImages = ({
-  links,
+  link,
   isLoading,
 }: {
-  links: LinkCategoryProps;
+  link: LinkCategoryProps;
   isLoading: boolean;
 }) => {
   return (
-    <Link key={links.id} href={`#`} target="_blank">
+    <Link key={link.id} href={link?.url || "#"} target="_blank">
       <div className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl cursor-pointer j">
         <BlurImage
           className="!h-[30rem] w-full object-cover transition-all duration-300 ease-in-out hover:scale-105 rounded-lg p-[2px]"
-          alt={links.title}
-          src={links.image}
+          alt={link.title}
+          src={link.image}
           isLoading={isLoading}
         />
         <div className="bg-white px-4 py-5 dark:bg-gray-950">
-          <h3 className="text-lg font-semibold">{links.title}</h3>
+          <h3 className="text-lg font-semibold">{link.title}</h3>
         </div>
       </div>
     </Link>

@@ -9,6 +9,7 @@ type LinkCategoryProps = {
   id: number | string;
   title: string;
   image: string;
+  url: string;
 };
 
 export const LinkCategories = () => {
@@ -25,7 +26,7 @@ export const LinkCategories = () => {
         {linksData
           ?.slice(linksData?.length - 6)
           ?.map((category: LinkCategoryProps) => (
-            <Category
+            <LinkCategory
               category={category}
               key={category?.id}
               isLoading={isLoading}
@@ -36,7 +37,7 @@ export const LinkCategories = () => {
   );
 };
 
-const Category = ({
+const LinkCategory = ({
   category,
   isLoading,
 }: {
@@ -44,7 +45,7 @@ const Category = ({
   isLoading: boolean;
 }) => {
   return (
-    <Link href={`/categories/${category.id}`} key={category.id}>
+    <Link href={category?.url || "#"} key={category.id}>
       <div className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl cursor-pointer">
         <BlurImage
           className="!h-[30rem] w-full object-cover transition-all duration-300 ease-in-out hover:scale-105 rounded-lg p-[2px]"
