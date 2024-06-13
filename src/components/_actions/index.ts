@@ -24,6 +24,7 @@ export function getBannerData() {
     bannerData: data?.response?.banner || [],
     sliderData: data?.response?.slider || [""],
     linksData: data?.response?.category || [],
+    programData: data?.response?.program || [],
     videosData: data?.response?.video || [],
     isLoading,
     isError: error,
