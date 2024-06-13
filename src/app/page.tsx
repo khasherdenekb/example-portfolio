@@ -9,8 +9,9 @@ const Home = () => {
     <div>
       <Hero />
       <HomeCaraousel type={"header"} />
-      <LinkCategories />
+      <LinkCategories type={"category"}/>
       <HomeVideo type={"header"} />
+      <LinkCategories type={"program"}/>
       <HomeCaraousel type={"footer"} />
     </div>
   );
