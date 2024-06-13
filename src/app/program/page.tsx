@@ -13,7 +13,7 @@ type LinkCategoryProps = {
 };
 
 const Links = () => {
-  const { linksData, isLoading, isError } = getBannerData();
+  const { programData, isLoading, isError } = getBannerData();
 
   if (isError) {
     return <div>Error loading categories</div>;
@@ -34,14 +34,14 @@ const Links = () => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <p className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white font-mono">
-              Холбоос
+              Хөтөлбөрүүд
             </p>
           </div>
         </div>
       </section>
       <section className="py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:gap-10">
-          {linksData?.map((link: LinkCategoryProps) => (
+          {programData?.map((link: LinkCategoryProps) => (
             <LinkImages link={link} isLoading={isLoading} />
           ))}
         </div>

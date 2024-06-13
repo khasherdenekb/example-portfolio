@@ -9,10 +9,11 @@ const Navbar = () => {
     <header className="right-0 flex items-center justify-between py-4 border-b h-16">
       <aside>
         <Link href={"/"} className="flex items-center gap-2">
+        <HomeIcon className="w-5 h-5 text-muted-foreground" />
           <h2 className="text-sm font-semibold tracking-normal scroll-m-20 lg:text-xl first:mt-0">
             С. Баасанжав
           </h2>
-          <HomeIcon className="w-5 h-5 text-muted-foreground" />
+        
         </Link>
       </aside>
       <aside className="flex lg:hidden">

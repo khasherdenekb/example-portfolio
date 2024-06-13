@@ -1,5 +1,6 @@
+"use client";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+
 import {
   Sheet,
   SheetClose,
@@ -12,8 +13,23 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import { getMenuData } from "./_actions";
+import { LoadingSpinner } from "@/components/custom/loading-spinner";
 
 export function NavbarMobile() {
+  const { menuData, isLoading, isError } = getMenuData();
+
+  if (isLoading) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return <div>Error loading menu</div>;
+  }
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -23,56 +39,24 @@ export function NavbarMobile() {
       </SheetTrigger>
       <SheetContent>
         <ul className="flex flex-col gap-4">
-          <li>
-            <Link className="text-[#266431]" href={"/"}>
-              Нүүр хуудас
-            </Link>
-          </li>
-          <li>
-            <Link className="text-[#266431]" href={"/business-journey"}>
-              Миний бизнесийн түүх
-            </Link>
-          </li>
-          <li>
-            <Link className="text-[#266431]" href={"/gallery"}>
-              Зургийн цомог
-            </Link>
-          </li>
-          <li>
-            <Link className="text-[#266431]" href={"/videos"}>
-              Бичлэг
-            </Link>
-          </li>
-          <li>
-            <Link className="text-[#266431]" href={"/product-program"}>
-              Бүтээгдэхүүний хөтөлбөрүүд
-            </Link>
-          </li>
-          <li>
-            <Link className="text-[#266431]" href={"/product-introduction"}>
-              Бүтээгдэхүүний танилцуулга
-            </Link>
-          </li>
-          <li>
-            <Link className="text-[#266431]" href={"/international-travel"}>
-              Олон улсын аялал
-            </Link>
-          </li>
-          <li>
-            <Link className="text-[#266431]" href={"/international-training"}>
-              Олон улсын сургалтуудын талаар
-            </Link>
-          </li>
-          <li>
-            <Link className="text-[#266431]" href={"/links"}>
-              Холбоосууд
-            </Link>
-          </li>
-          <li>
-            <Link className="text-[#266431]" href={"/contact-us"}>
-              Холбоо барих
-            </Link>
-          </li>
+          {menuData.map((menuItem) => (
+            <>
+              <li>
+                <Link className="text-[#266431]" href={menuItem?.url}>
+                  {menuItem?.title}
+                </Link>
+              </li>
+              {menuItem.subMenu.length > 0
+                ? menuItem.subMenu.map((subMenuItem) => (
+                    <li>
+                      <Link className="text-[#266431]" href={subMenuItem?.url}>
+                        {subMenuItem?.title}
+                      </Link>
+                    </li>
+                  ))
+                : null}
+            </>
+          ))}
         </ul>
       </SheetContent>
     </Sheet>
