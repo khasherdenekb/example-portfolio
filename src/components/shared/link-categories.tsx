@@ -27,7 +27,6 @@ export const LinkCategories = ({ type }: { type: string }) => {
       />
       <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
         {listData
-          ?.slice(listData?.length - 6)
           ?.map((category: LinkCategoryProps) => (
             <LinkCategory
               category={category}
