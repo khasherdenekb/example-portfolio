@@ -1,6 +1,5 @@
 "use client";
-import { Product } from "@/components/shared/products";
-import { categories, dummyData } from "@/data/dummyData";
+import { categories } from "@/data/dummyData";
 import React, { useEffect } from "react";
 import {
   Command,
@@ -90,9 +89,9 @@ const CategoryPage = ({ params: { id } }: { params: { id: string } }) => {
         </Popover>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4 mb-4">
-        {dummyData?.map((product) => (
+        {/* {dummyData?.map((product) => (
           <Product product={product} key={product.id} />
-        ))}
+        ))} */}
       </div>
     </>
   );

@@ -5,17 +5,17 @@ import Navbar from "@/components/shared/navbar/navbar";
 import "@/css/globals.css";
 import "@/css/embla.css";
 import GoToTopButton from "@/components/custom/go-to-top";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// TODO: end logo orj ireh ystoi
 export const metadata: Metadata = {
   title: "Portfolio example",
   description: "Portfolio example",
   icons: {
-    icon: "/logo.jpg",
-    shortcut: "/logo.jpg",
-    apple: "/logo.jpg",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
   openGraph: {
     images: [
@@ -39,6 +39,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} bg-slate-50`}>
         <main className="container relative">
+          {/* <Image height={400} width={300} src="/travel-banne1.jpg" alt="aa" /> */}
           <Navbar />
           {children}
           <GoToTopButton />

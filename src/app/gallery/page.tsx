@@ -2,6 +2,7 @@
 import React from "react";
 import { galleryCards } from "@/data/dummyData";
 import Link from "next/link";
+import Image from "next/image";
 
 type GalleryCard = {
   thumbnail: string;
@@ -13,9 +14,18 @@ type GalleryCard = {
 const Gallery = () => {
   return (
     <div className="h-fit w-full">
-      <section className="bg-[url(https://frisk-nextjs.vercel.app/assets/img/bg/breadcumb-bg1-7.jpg)] bg-cover bg-center bg-no-repeat mb-10">
-        <div className="mx-auto max-w-screen-xl px-4 py-16 lg:py-32 sm:px-6 lg:flex lg:h-[300px] lg:items-center lg:justify-center lg:px-8">
-          <div className="flex flex-col items-center justify-center text-center">
+      <section className="relative mb-10 h-80">
+        <Image
+          unoptimized
+          src="/assets/gallery-background.jpeg"
+          alt="Background"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+          className="z-0"
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
             <p className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white font-mono">
               Зургийн цомог
             </p>
@@ -37,7 +47,8 @@ const GalleryImage = ({ card }: { card: GalleryCard }) => {
   return (
     <Link key={card.id} href={`/gallery/${card.id}`}>
       <div className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl cursor-pointer">
-        <img
+        <Image
+          unoptimized
           src={card.thumbnail}
           alt={card.title}
           width={600}
