@@ -26,14 +26,13 @@ export const LinkCategories = ({ type }: { type: string }) => {
         title={type == "category" ? "Бүтээгдэхүүний ангилал" : "Хөтөлбөрүүд"}
       />
       <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {listData
-          ?.map((category: LinkCategoryProps) => (
-            <LinkCategory
-              category={category}
-              key={category?.id}
-              isLoading={isLoading}
-            />
-          ))}
+        {listData?.slice(0, 6)?.map((category: LinkCategoryProps) => (
+          <LinkCategory
+            category={category}
+            key={category?.id}
+            isLoading={isLoading}
+          />
+        ))}
       </div>
     </div>
   );
