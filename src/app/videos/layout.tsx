@@ -14,7 +14,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  metadataBase: new URL("https://example-portfolio-nine.vercel.app"),
+  metadataBase: new URL("http://baaskaherbalifeclub.com/"),
 };
 
 export default function RootLayout({

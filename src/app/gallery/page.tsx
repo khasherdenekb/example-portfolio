@@ -13,8 +13,8 @@ type GalleryCard = {
 
 const Gallery = () => {
   return (
-    <div className="h-fit w-full">
-      <section className="relative mb-10 h-80">
+    <div className="h-fit w-full py-8">
+      <section className="relative mb-10 h-96 ">
         <Image
           unoptimized
           src="/assets/gallery-background.jpeg"

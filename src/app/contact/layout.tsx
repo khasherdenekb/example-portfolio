@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
 
-//TODO: url dran env gees avdag bolgoh
 export const metadata: Metadata = {
-  title: "International training",
-  description: "International training",
+  title: "Холбоо барих",
+  description: "Холбоо барих",
   openGraph: {
     images: [
       {
-        url: "/travel-banner2.jpg",
+        url: "/travel-banner3.jpg",
         width: 1200,
         height: 630,
-        alt: "international training",
+        alt: "contact",
       },
     ],
   },
-  metadataBase: new URL("https://example-portfolio-nine.vercel.app"),
+  metadataBase: new URL("http://baaskaherbalifeclub.com/"),
 };
 
 export default function RootLayout({

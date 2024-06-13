@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
 import { Newsletter } from "./newsletter";
 import { Card } from "../ui/card";
@@ -11,87 +9,43 @@ export default function Footer(): JSX.Element {
       <div className="py-16">
         <Newsletter />
         <hr className="py-4 mx-10" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-14">
-          <div className="space-y-4">
-            <Link className="flex gap-2 items-center" href="#" prefetch={false}>
-              <Home className="w-5 h-5" />
-              <p className="font-medium text-sm tracking-normal">
-                С. Баасанжав
-              </p>
+        <div className="flex justify-between px-10">
+          <Link className="flex gap-2 items-center" href="#" prefetch={false}>
+            <Home className="w-5 h-5" />
+            <p className="font-medium text-sm tracking-normal">С. Баасанжав</p>
+          </Link>
+          <div className="flex items-center space-x-4">
+            <Link
+              href="#"
+              className="text-gray-400 hover:text-gray-300"
+              prefetch={false}
+            >
+              <FacebookIcon className="h-5 w-5" />
+              <span className="sr-only">Facebook</span>
             </Link>
-            <p className="max-w-md text-sm">
-              Ace Inc is a leading provider of innovative solutions for
-              businesses of all sizes. Our mission is to empower our clients
-              with the tools they need to succeed in the digital age.
-            </p>
-            <div className="flex items-center space-x-4">
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-gray-300"
-                prefetch={false}
-              >
-                <FacebookIcon className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
 
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-gray-300"
-                prefetch={false}
-              >
-                <InstagramIcon className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </Link>
-              <Link
-                href="#"
-                className="text-gray-400 hover:text-gray-300"
-                prefetch={false}
-              >
-                <LinkedinIcon className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-4">
-            <TempData />
-            <TempData />
-            <TempData />
+            <Link
+              href="#"
+              className="text-gray-400 hover:text-gray-300"
+              prefetch={false}
+            >
+              <InstagramIcon className="h-5 w-5" />
+              <span className="sr-only">Instagram</span>
+            </Link>
+            <Link
+              href="#"
+              className="text-gray-400 hover:text-gray-300"
+              prefetch={false}
+            >
+              <LinkedinIcon className="h-5 w-5" />
+              <span className="sr-only">LinkedIn</span>
+            </Link>
           </div>
         </div>
       </div>
     </Card>
   );
 }
-
-const TempData = () => {
-  return (
-    <div className="space-y-2">
-      <h4 className="text-white font-semibold">Company</h4>
-      <ul className="space-y-1">
-        <li>
-          <Link href="#" className="hover:text-gray-300" prefetch={false}>
-            About
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="hover:text-gray-300" prefetch={false}>
-            Careers
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="hover:text-gray-300" prefetch={false}>
-            Blog
-          </Link>
-        </li>
-        <li>
-          <Link href="#" className="hover:text-gray-300" prefetch={false}>
-            Contact
-          </Link>
-        </li>
-      </ul>
-    </div>
-  );
-};
 
 function FacebookIcon(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (

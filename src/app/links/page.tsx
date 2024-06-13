@@ -1,20 +1,75 @@
-import { PageTitle } from "@/components/custom/page-title";
-import Image from "next/image";
+"use client";
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { getBannerData } from "@/components/_actions";
+import { BlurImage } from "@/components/custom/blur-image";
+
+type LinkCategoryProps = {
+  id: number | string;
+  title: string;
+  image: string;
+};
 
 const Links = () => {
+  const { linksData, isLoading, isError } = getBannerData();
+
+  if (isError) {
+    return <div>Error loading categories</div>;
+  }
+
   return (
-    <div className="pb-8">
-      <PageTitle title={"Холбоосууд"} />
-      <div className=" relative h-[200px] lg:h-[700px] w-full z-[-1] ">
+    <div className="h-fit w-full py-8">
+      <section className="relative mb-10 h-96">
         <Image
-          src={"/travel-banner4.jpg"}
-          fill
-          className="w-full h-full absolute"
-          alt="image-banner"
+          unoptimized
+          src="/assets/gallery-background.jpeg"
+          alt="Background"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+          className="z-0"
         />
-      </div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white font-mono">
+              Холбоосууд
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="py-12 md:py-16 lg:py-20">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:gap-10">
+          {linksData?.map((links: LinkCategoryProps) => (
+            <LinkImages links={links} isLoading={isLoading} />
+          ))}
+        </div>
+      </section>
     </div>
+  );
+};
+
+const LinkImages = ({
+  links,
+  isLoading,
+}: {
+  links: LinkCategoryProps;
+  isLoading: boolean;
+}) => {
+  return (
+    <Link key={links.id} href={`#`} target="_blank">
+      <div className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl cursor-pointer j">
+        <BlurImage
+          className="!h-[30rem] w-full object-cover transition-all duration-300 ease-in-out hover:scale-105 rounded-lg p-[2px]"
+          alt={links.title}
+          src={links.image}
+          isLoading={isLoading}
+        />
+        <div className="bg-white px-4 py-5 dark:bg-gray-950">
+          <h3 className="text-lg font-semibold">{links.title}</h3>
+        </div>
+      </div>
+    </Link>
   );
 };
 

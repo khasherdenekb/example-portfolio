@@ -23,8 +23,7 @@ export function getBannerData() {
   return {
     bannerData: data?.response?.banner || [],
     sliderData: data?.response?.slider || [""],
-    categoryData: data?.response?.category || [],
-    productsData: data?.response?.products || [],
+    linksData: data?.response?.category || [],
     videosData: data?.response?.video || [],
     isLoading,
     isError: error,
