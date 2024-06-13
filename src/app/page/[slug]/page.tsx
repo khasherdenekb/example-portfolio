@@ -20,7 +20,7 @@ const AboutSlug = () => {
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
         <BlurImage isLoading={isLoading} src={data.image} alt={data.title} />
-        <p>{data.date}</p>
+        <p className="right-0 text-gray-400">Нийтэлсэн огноо: {data.date}</p>
       </CardContent>
     </Card>
   );
