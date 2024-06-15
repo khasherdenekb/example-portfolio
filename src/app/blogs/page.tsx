@@ -3,7 +3,8 @@ import { blogDetails } from "@/data/dummyData";
 import Link from "next/link";
 import { getBlogs } from "./_actions";
 import Image from "next/image";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
+import { Pagination, PaginationProps } from "antd";
 
 type BlogFeatureDetailProps = {
   id: number | string;
@@ -14,13 +15,19 @@ type BlogFeatureDetailProps = {
 
 // TODO: hamgiin ehend haragdah ni pin blog
 // TODO: side blog ni feature blog
-const Information = () => {
+const Blogs = () => {
   const { data, isError, isLoading } = getBlogs();
+  const onShowSizeChange: PaginationProps["onShowSizeChange"] = (
+    current,
+    pageSize
+  ) => {
+    console.log(current, pageSize);
+  };
 
   console.log(data, "DATA");
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 px-4 py-8">
+    <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 py-8">
       <Card className="prose prose-gray max-w-none dark:prose-invert">
         <CardContent>
           <figure className="mb-6 -mx-4 md:-mx-0 my-8">
@@ -90,10 +97,10 @@ const Information = () => {
           </div>
         </CardContent>
       </Card>
-      <div className="space-y-6">
-        <div className="grid gap-4">
+      <Card className="space-y-6">
+        <CardContent className="grid gap-4 py-8">
           <h2 className="text-2xl font-bold tracking-tight">
-            More from the blog
+            Нэмэлт мэдээнүүд
           </h2>
           <div className="grid gap-4">
             {blogDetails?.map((blog) => (
@@ -104,8 +111,16 @@ const Information = () => {
               </>
             ))}
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
+      <Card className="p-2">
+        <Pagination
+          pageSizeOptions={[10, 15]}
+          showSizeChanger
+          onShowSizeChange={onShowSizeChange}
+          total={500}
+        />
+      </Card>
     </div>
   );
 };
@@ -134,4 +149,4 @@ const BlogFeatureDetail = ({ blog }: { blog: BlogFeatureDetailProps }) => {
   );
 };
 
-export default Information;
+export default Blogs;

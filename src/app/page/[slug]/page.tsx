@@ -4,6 +4,7 @@ import { getAbout } from "../_actions";
 import { PageTitle } from "@/components/custom/page-title";
 import { Card, CardContent } from "@/components/ui/card";
 import { BlurImage } from "@/components/custom/blur-image";
+import { PageSlugSkeleton } from "@/components/custom/skeletons";
 
 const AboutSlug = () => {
   const { slug } = useParams();
@@ -14,13 +15,22 @@ const AboutSlug = () => {
   return (
     <Card className="my-5">
       <CardContent>
-        <PageTitle className="py-5" title={data.title} />
-        <div
-          className="pb-2"
-          dangerouslySetInnerHTML={{ __html: data.description }}
+        <PageTitle
+          className="py-5 text-center"
+          title={isLoading ? "Уншиж байна..." : data.title}
         />
-        <BlurImage isLoading={isLoading} src={data.image} alt={data.title} />
-        <p className="right-0 text-gray-400">Нийтэлсэн огноо: {data.date}</p>
+        {isLoading ? (
+          <PageSlugSkeleton />
+        ) : (
+          <div
+            className="pb-2"
+            dangerouslySetInnerHTML={{ __html: data.description }}
+          />
+        )}
+        <BlurImage isLoading={isLoading} src={data?.image} alt={data?.title} />
+        <p className="right-0 text-gray-400">
+          Нийтэлсэн огноо: {isLoading ? "Уншиж байна..." : data?.date}
+        </p>
       </CardContent>
     </Card>
   );

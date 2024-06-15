@@ -1,17 +1,32 @@
+"use client";
+import { BlurImage } from "@/components/custom/blur-image";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const InformationDetail = () => {
+  const router = useRouter();
+
   return (
     <Card className="my-8">
       <CardContent>
         <section className="w-full pt-8">
-          <div>
-            <img
+          <div className="relative">
+            <BlurImage
+              isLoading={false}
               src="/travel-banner3.jpg"
               alt="Hero Image"
-              className="mx-auto rounded-lg aspect-[2/1] object-cover w-full h-[450px]"
+              className="mx-auto rounded-lg aspect-[2/1] object-cover w-full !h-[450px]"
             />
+            <Button
+              onClick={() => router.push("/blogs")}
+              className="absolute top-4 left-4 rounded-full"
+              size={"icon"}
+            >
+              <ArrowLeft />
+            </Button>
           </div>
         </section>
         <article className="py-12 md:py-16 lg:py-24">
@@ -19,18 +34,6 @@ const InformationDetail = () => {
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
               The Future of Web Development: Embracing the Power of Tailwind CSS
             </h1>
-            <div className="flex gap-2 items-center text-sm text-muted-foreground pt-2">
-              <img
-                src="/travel-banner1.jpg"
-                width={32}
-                height={32}
-                alt="Author Avatar"
-                className="h-8 w-8 rounded-full"
-              />
-              <p>John Doe</p>
-              <p>|</p>
-              <p>May 15, 2024</p>
-            </div>
             <section className="mt-8">
               <h2 className="text-2xl font-bold tracking-tight">
                 The Rise of Tailwind CSS

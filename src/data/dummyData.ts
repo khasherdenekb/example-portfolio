@@ -44,29 +44,6 @@ export const galleryCards = [
   },
 ];
 
-export const categories = [
-  {
-    id: 1,
-    image: "/travel-banner1.jpg",
-    title: "Category 1",
-  },
-  {
-    id: 2,
-    image: "/travel-banner2.jpg",
-    title: "Category 2",
-  },
-  {
-    id: 3,
-    image: "/travel-banner3.jpg",
-    title: "Category 3",
-  },
-  {
-    id: 4,
-    image: "/travel-banner4.jpg",
-    title: "Category 4",
-  },
-];
-
 export const blogDetails = [
   {
     id: 1,
