@@ -5,6 +5,7 @@ import { getBlogs } from "./_actions";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Pagination, PaginationProps } from "antd";
+import { ERROR_MSG } from "@/lib/constants";
 
 type BlogFeatureDetailProps = {
   id: number | string;
@@ -24,10 +25,12 @@ const Blogs = () => {
     console.log(current, pageSize);
   };
 
+  if (isError) return <p>{ERROR_MSG}</p>;
+
   console.log(data, "DATA");
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 py-8">
+    <div className="grid grid-cols-1 xl:grid-cols-[2fr_1fr] gap-8 py-8">
       <Card className="prose prose-gray max-w-none dark:prose-invert">
         <CardContent>
           <figure className="mb-6 -mx-4 md:-mx-0 my-8">

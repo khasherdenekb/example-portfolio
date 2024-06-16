@@ -5,24 +5,17 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { getBannerData } from "../_actions";
 import { VideoSkeleton } from "../custom/skeletons";
 import ReactPlayer from "react-player";
-
-function getYouTubeThumbnail(url: string) {
-  const videoId = url.split("v=")[1]?.split("&")[0];
-  return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-}
+import { getYouTubeThumbnail } from "@/lib/utils";
+import { ERROR_MSG } from "@/lib/constants";
 
 export default function HomeVideo({ type }: { type: string }) {
   const { videosData, isLoading, isError } = getBannerData();
 
   const video = type === "header" ? videosData?.header : videosData?.footer;
 
-  if (isLoading) {
-    return <VideoSkeleton />;
-  }
+  if (isLoading) return <VideoSkeleton />;
 
-  if (isError) {
-    return <div>Error loading sliders</div>;
-  }
+  if (isError) return <p>{ERROR_MSG}</p>;
 
   const thumbnailUrl = video
     ? getYouTubeThumbnail(video.url)

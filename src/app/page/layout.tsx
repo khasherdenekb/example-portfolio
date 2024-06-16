@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-//TODO: url dran env gees avdag bolgoh
+//TODO: ssl after all
+//TODO: title description will be get from backend
 export const metadata: Metadata = {
   title: "Contact us",
   description: "Contact us",

@@ -1,20 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
 
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { getMenuData } from "./_actions";
 import { LoadingSpinner } from "@/components/custom/loading-spinner";
+import { ERROR_MSG } from "@/lib/constants";
 
 export function NavbarMobile() {
   const { menuData, isLoading, isError } = getMenuData();
@@ -27,9 +19,8 @@ export function NavbarMobile() {
     );
   }
 
-  if (isError) {
-    return <div>Error loading menu</div>;
-  }
+  if (isError) return <p>{ERROR_MSG}</p>;
+
   return (
     <Sheet>
       <SheetTrigger asChild>

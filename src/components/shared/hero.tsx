@@ -2,18 +2,16 @@
 import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { getBannerData } from "../_actions";
-import { useRouter } from "next/navigation";
 import { BlurImage } from "../custom/blur-image";
+import { ERROR_MSG } from "@/lib/constants";
+import Link from "next/link";
 
 const Hero = () => {
-  const router = useRouter();
   const { bannerData, isLoading, isError } = getBannerData();
   const data = bannerData?.header?.[0];
   const imageUrl = data?.images?.[0];
 
-  if (isError) {
-    return <div>Error loading menu</div>;
-  }
+  if (isError) return <p>{ERROR_MSG}</p>;
 
   return (
     <section className="relative bg-center bg-no-repeat bg-cover h-[750px] w-full mt-5">
@@ -40,14 +38,12 @@ const Hero = () => {
               />
 
               <div className="pt-2 text-center">
-                <Button
-                  onClick={() => router.push(data?.url)}
-                  className="bg-[#2A6F37] w-48 md:w-96"
-                  size={"lg"}
-                >
-                  Үзэх
-                  <ArrowUpRight className="pl-2" />
-                </Button>
+                <Link href={data?.url} target="_blank">
+                  <Button className="bg-[#2A6F37] w-48 md:w-96" size={"lg"}>
+                    Үзэх
+                    <ArrowUpRight className="pl-2" />
+                  </Button>
+                </Link>
               </div>
             </div>
           )}

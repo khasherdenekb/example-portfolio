@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getBannerData } from "@/components/_actions";
 import { BlurImage } from "@/components/custom/blur-image";
+import { ERROR_MSG } from "@/lib/constants";
 
 type LinkCategoryProps = {
   id: number | string;
@@ -15,9 +16,7 @@ type LinkCategoryProps = {
 const Links = () => {
   const { linksData, isLoading, isError } = getBannerData();
 
-  if (isError) {
-    return <div>Error loading categories</div>;
-  }
+  if (isError) return <p>{ERROR_MSG}</p>;
 
   return (
     <div className="h-fit w-full py-8">

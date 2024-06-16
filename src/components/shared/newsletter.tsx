@@ -5,7 +5,6 @@ import { Input } from "../ui/input";
 export const Newsletter = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log("Subscribed!");
   };
 
   return (
@@ -30,7 +29,7 @@ export const Newsletter = () => {
             className="bg-muted/50 dark:bg-muted/80 "
             aria-label="email"
           />
-          <Button className="bg-[#2A6F37]">Subscribe</Button>
+          <Button className="bg-[#2A6F37]">Бүртгүүлэх</Button>
         </form>
       </div>
     </>

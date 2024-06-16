@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { getMenuData } from "./_actions";
 import { LoadingSpinner } from "@/components/custom/loading-spinner";
+import { ERROR_MSG } from "@/lib/constants";
 
 export function NavbarMenu() {
   const { menuData, isLoading, isError } = getMenuData();
@@ -26,9 +27,7 @@ export function NavbarMenu() {
     );
   }
 
-  if (isError) {
-    return <div>Error loading menu</div>;
-  }
+  if (isError) return <p>{ERROR_MSG}</p>;
 
   return (
     <NavigationMenu className="text-[#266431] z-50">

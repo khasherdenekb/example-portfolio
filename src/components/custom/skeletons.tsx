@@ -15,3 +15,11 @@ export const PageSlugSkeleton = () => {
     </div>
   );
 };
+
+export const GalleryDetailSkeleton = () => {
+  return (
+    <div className="flex flex-col space-y-3">
+      <Skeleton className="h-[475px] w-full rounded-xl bg-slate-200" />
+    </div>
+  );
+};

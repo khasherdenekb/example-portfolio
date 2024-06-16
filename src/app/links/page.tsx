@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getBannerData } from "@/components/_actions";
 import { BlurImage } from "@/components/custom/blur-image";
+import { ERROR_MSG } from "@/lib/constants";
 
 type LinkCategoryProps = {
   id: number | string;
@@ -15,9 +16,7 @@ type LinkCategoryProps = {
 const Links = () => {
   const { linksData, isLoading, isError } = getBannerData();
 
-  if (isError) {
-    return <div>Error loading categories</div>;
-  }
+  if (isError) return <p>{ERROR_MSG}</p>;
 
   return (
     <div className="h-fit w-full py-8">
@@ -34,7 +33,7 @@ const Links = () => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <p className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white font-mono">
-              Холбоос
+              Бүтээгдэхүүнүүд
             </p>
           </div>
         </div>

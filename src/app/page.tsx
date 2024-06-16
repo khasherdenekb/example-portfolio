@@ -6,14 +6,14 @@ import HomeCaraousel from "@/components/shared/carousel/HomeCarousel";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Hero />
       <HomeCaraousel type={"header"} />
-      <LinkCategories type={"category"}/>
+      <LinkCategories type={"category"} />
       <HomeVideo type={"header"} />
-      <LinkCategories type={"program"}/>
+      <LinkCategories type={"program"} />
       <HomeCaraousel type={"footer"} />
-    </div>
+    </>
   );
 };
 
