@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type PropType = {
   slides: number[];
@@ -44,6 +46,11 @@ export const EmblaCarouselWithThumbnail: React.FC<PropType> = (props) => {
 
   return (
     <div className="embla2 max-w-xs xs:max-w-md md:max-w-2xl lg:max-w-3xl">
+      {/* Title and description */}
+      <div className="pb-2 text-center">
+        <p className="text-xl">Гарчиг...</p>
+        <p className="text-muted-foreground text-sm">Тайлбар...</p>
+      </div>
       <div className="embla__viewport" ref={emblaMainRef}>
         <div className="embla__container2">
           {slides.map((index) => (
@@ -64,6 +71,20 @@ export const EmblaCarouselWithThumbnail: React.FC<PropType> = (props) => {
                     layout="fill"
                     className="object-cover max-w-[860px]"
                   />
+                  <Button
+                    size={"icon"}
+                    onClick={() => onThumbClick(index - 1)}
+                    className="rounded-full absolute left-5 text-green-500 top-1/2 transform -translate-y-1/2 w-8 h-8"
+                  >
+                    <ChevronLeftIcon className="text-white" />
+                  </Button>
+                  <Button
+                    className="absolute right-1 top-1/2 transform -translate-y-1/2 text-green-500 w-8 h-8 rounded-full"
+                    size={"icon"}
+                    onClick={() => onThumbClick(index + 1)}
+                  >
+                    <ChevronRightIcon className="text-white" />
+                  </Button>
                 </div>
               </div>
             </div>
@@ -84,6 +105,13 @@ export const EmblaCarouselWithThumbnail: React.FC<PropType> = (props) => {
             ))}
           </div>
         </div>
+      </div>
+      {/* Footer description */}
+      <div className="pt-2 flex justify-end">
+        <p className="text-muted-foreground text-base">
+          <span className="text-slate-700 font-normal">{selectedIndex}</span> /{" "}
+          {slides?.length}
+        </p>
       </div>
     </div>
   );

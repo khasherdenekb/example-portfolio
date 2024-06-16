@@ -64,6 +64,7 @@ const LinkImages = ({
           alt={link.title}
           src={link.image}
           isLoading={isLoading}
+          isCover={false}
         />
         <div className="bg-white px-4 py-5 dark:bg-gray-950">
           <h3 className="text-lg font-semibold">{link.title}</h3>

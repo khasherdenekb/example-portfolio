@@ -7,9 +7,16 @@ type Card = {
   src: string;
   className?: string;
   isLoading: boolean;
+  isCover?: boolean;
 };
 
-export const BlurImage = ({ src, alt, className, isLoading }: Card) => {
+export const BlurImage = ({
+  src,
+  alt,
+  className,
+  isLoading,
+  isCover = true,
+}: Card) => {
   return (
     <motion.div
       className={cn(
@@ -23,8 +30,9 @@ export const BlurImage = ({ src, alt, className, isLoading }: Card) => {
         unoptimized
         src={src}
         className={cn(
-          "object-cover object-top absolute inset-0 h-full w-full transition duration-200",
-          !isLoading ? "blur-none" : "blur-md"
+          "object-top absolute inset-0 h-full w-full transition duration-200",
+          !isLoading ? "blur-none" : "blur-md",
+          isCover ? "object-cover" : "object-contain"
         )}
         layout="fill"
         alt={alt}

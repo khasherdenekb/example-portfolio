@@ -57,6 +57,7 @@ const LinkCategory = ({
           alt={category.title}
           src={category.image}
           isLoading={isLoading}
+          isCover={false}
         />
       </div>
       <p className="text-center pt-2 font-mono font-semibold">

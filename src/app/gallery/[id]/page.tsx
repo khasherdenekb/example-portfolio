@@ -8,7 +8,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import React from "react";
@@ -59,14 +67,12 @@ const GalleryDetail = () => {
                       height={475}
                     />
                   </DialogTrigger>
-                  {indexOfData === key ? (
-                    <DialogContent className="max-w-sm xs:max-w-2xl md:max-w-3xl lg:max-w-4xl">
-                      <EmblaCarouselWithThumbnail
-                        indexOfData={indexOfData}
-                        slides={SLIDES}
-                      />
-                    </DialogContent>
-                  ) : null}
+                  <DialogContent className="max-w-sm xs:max-w-2xl md:max-w-3xl lg:max-w-4xl">
+                    <EmblaCarouselWithThumbnail
+                      indexOfData={indexOfData}
+                      slides={SLIDES}
+                    />
+                  </DialogContent>
                 </Dialog>
               ))}
         </CardContent>

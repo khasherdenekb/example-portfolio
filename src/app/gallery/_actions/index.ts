@@ -20,8 +20,6 @@ export function getGalleries() {
     fetcher
   );
 
-  console.log(data);
-
   return {
     data: data?.response || [],
     isLoading,

@@ -13,7 +13,7 @@ type LinkCategoryProps = {
   url: string;
 };
 
-const Links = () => {
+const Programms = () => {
   const { programData, isLoading, isError } = getBannerData();
 
   if (isError) return <p>{ERROR_MSG}</p>;
@@ -41,7 +41,7 @@ const Links = () => {
       <section className="py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:gap-10">
           {programData?.map((link: LinkCategoryProps) => (
-            <LinkImages link={link} isLoading={isLoading} />
+            <ProgrammsImages link={link} isLoading={isLoading} />
           ))}
         </div>
       </section>
@@ -49,7 +49,7 @@ const Links = () => {
   );
 };
 
-const LinkImages = ({
+const ProgrammsImages = ({
   link,
   isLoading,
 }: {
@@ -64,6 +64,7 @@ const LinkImages = ({
           alt={link.title}
           src={link.image}
           isLoading={isLoading}
+          isCover={false}
         />
         <div className="bg-white px-4 py-5 dark:bg-gray-950">
           <h3 className="text-lg font-semibold">{link.title}</h3>
@@ -73,4 +74,4 @@ const LinkImages = ({
   );
 };
 
-export default Links;
+export default Programms;

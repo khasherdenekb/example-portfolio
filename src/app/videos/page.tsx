@@ -8,6 +8,7 @@ import ReactPlayer from "react-player";
 import Image from "next/image";
 import { getYouTubeThumbnail } from "@/lib/utils";
 import { LoadingSpinner } from "@/components/custom/loading-spinner";
+import { BlurImage } from "@/components/custom/blur-image";
 
 const Videos = () => {
   const { items, isLoading, isError, size, setSize, isValidating } =
@@ -18,6 +19,10 @@ const Videos = () => {
   // const thumbnailUrl = video
   //   ? getYouTubeThumbnail(video.url)
   //   : "/default-thumbnail.jpg";
+
+  const thumbnailUrl = getYouTubeThumbnail(
+    "https://www.youtube.com/watch?v=M4sH0TvA1-M"
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +40,6 @@ const Videos = () => {
   }, [size, isValidating]);
 
   if (isError) return <div>Failed to load</div>;
-  if (isLoading) return <div>Loading...</div>;
 
   return (
     <>
@@ -64,13 +68,12 @@ const Videos = () => {
               <DialogTrigger className="cursor-pointer" asChild>
                 <div className="relative h-[600px]">
                   {/* TODO src нь thumbnail url байх ёстой */}
-                  <Image
-                    unoptimized
+                  <BlurImage
+                    isLoading={isLoading}
                     className="rounded-3xl shadow-2xl transition-shadow duration-300 ease-in-out object-cover"
-                    src={"/travel-banner1.jpg"}
+                    src={thumbnailUrl}
                     // src={thumbnailUrl}
                     alt={"Video thumbnail"}
-                    fill
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="bg-white rounded-full p-2 w-14 h-14 flex items-center justify-center text-sm font-mono">
@@ -80,7 +83,12 @@ const Videos = () => {
                 </div>
               </DialogTrigger>
               <DialogContent className="!p-0 border-none max-w-[900px] text-white">
-                {/* <ReactPlayer width={"100%"} height={600} url={video?.url} /> */}
+                {/* TODO энд бичлэгний url сервисээс дуудаж оруулна уу */}
+                <ReactPlayer
+                  width={"100%"}
+                  height={600}
+                  url={"https://www.youtube.com/watch?v=M4sH0TvA1-M"}
+                />
               </DialogContent>
             </Dialog>
           ))}
