@@ -12,7 +12,7 @@ const fetcher = async (url: string) => {
   }).then((res) => res.json());
 };
 
-export function getBannerData() {
+export function getHomeData() {
   const { data, error, isLoading } = useSWR(
     `${API_URL}/api/v1/home/getModules`,
     fetcher

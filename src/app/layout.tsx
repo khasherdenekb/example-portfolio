@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Footer from "@/components/shared/footer";
-import Navbar from "@/components/shared/navbar/navbar";
+import Footer from "@/components/shared/layout/footer/footer";
+import Navbar from "@/components/shared/layout/navbar/navbar";
 import GoToTopButton from "@/components/custom/go-to-top";
 import "@/css/globals.css";
 import "@/css/embla.css";

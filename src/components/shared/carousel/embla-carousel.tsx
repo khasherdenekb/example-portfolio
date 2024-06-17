@@ -7,8 +7,8 @@ import {
   NextButton,
   PrevButton,
   usePrevNextButtons,
-} from "./EmblaCarouselArrowButtons";
-import { useDotButton } from "./EmblaCarouselDotButton";
+} from "./embla-carousel-arrow-buttons";
+import { useDotButton } from "./embla-carousel-dot-button";
 import { BlurImage } from "@/components/custom/blur-image";
 
 type PropType = {
@@ -42,9 +42,9 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         </div>
       </div>
       <div className="embla__viewport " ref={emblaRef}>
-        <div className="embla__container z-[-1] relative">
+        <div className="embla__container relative">
           {slides?.map((item: string, index: React.Key) => (
-            <div className="embla__slide embla__class-names" key={index}>
+            <div className="embla__slide" key={index}>
               <BlurImage
                 className="embla__slide__img"
                 src={item}

@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import { getAbout } from "../_actions";
-import { PageTitle } from "@/components/custom/page-title";
+import { PageTitle } from "@/components/custom/page-helper";
 import { Card, CardContent } from "@/components/ui/card";
 import { BlurImage } from "@/components/custom/blur-image";
 import { PageSlugSkeleton } from "@/components/custom/skeletons";
@@ -29,7 +29,7 @@ const AboutSlug = () => {
           />
         )}
         <BlurImage isLoading={isLoading} src={data?.image} alt={data?.title} />
-        <p className="right-0 text-gray-400">
+        <p className="right-0 text-muted-foreground">
           Нийтэлсэн огноо: {isLoading ? "Уншиж байна..." : data?.date}
         </p>
       </CardContent>

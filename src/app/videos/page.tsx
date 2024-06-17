@@ -1,14 +1,14 @@
 "use client";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import React, { useEffect } from "react";
 import { getVideos } from "./_actions";
 import { PlayCircleIcon } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import ReactPlayer from "react-player";
-import Image from "next/image";
 import { getYouTubeThumbnail } from "@/lib/utils";
 import { LoadingSpinner } from "@/components/custom/loading-spinner";
 import { BlurImage } from "@/components/custom/blur-image";
+import { PageImage } from "@/components/custom/page-helper";
 
 const Videos = () => {
   const { items, isLoading, isError, size, setSize, isValidating } =
@@ -43,36 +43,21 @@ const Videos = () => {
 
   return (
     <>
-      <section className="relative mb-10 mt-8 h-96">
-        <Image
-          unoptimized
-          src="/assets/gallery-background.jpeg"
-          alt="Background"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          className="z-0"
-        />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white font-mono">
-              Бичлэгүүд
-            </p>
-          </div>
-        </div>
-      </section>
-      <Card className="py-20 lg:py-5">
-        <CardContent className="gap-5 flex flex-col">
-          {items.map((item, index) => (
-            <Dialog>
-              <DialogTrigger className="cursor-pointer" asChild>
-                <div className="relative h-[600px]">
-                  {/* TODO src нь thumbnail url байх ёстой */}
+      <PageImage title="Бичлэгүүд" />
+      <div className="py-20 lg:py-5 gap-5 grid grid-cols-2">
+        {items.map((item, index) => (
+          <Dialog>
+            <DialogTrigger className="cursor-pointer" asChild>
+              <Card className="relative ">
+                <CardHeader className="!text-center">
+                  <CardTitle>Гарчиг...</CardTitle>
+                </CardHeader>
+                {/* TODO src нь thumbnail url байх ёстой */}
+                <CardContent>
                   <BlurImage
                     isLoading={isLoading}
-                    className="rounded-3xl shadow-2xl transition-shadow duration-300 ease-in-out object-cover"
+                    className="rounded-3xl shadow-2xl transition-shadow duration-300 ease-in-out !h-[550px]"
                     src={thumbnailUrl}
-                    // src={thumbnailUrl}
                     alt={"Video thumbnail"}
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -80,25 +65,25 @@ const Videos = () => {
                       <PlayCircleIcon />
                     </span>
                   </div>
-                </div>
-              </DialogTrigger>
-              <DialogContent className="!p-0 border-none max-w-[900px] text-white">
-                {/* TODO энд бичлэгний url сервисээс дуудаж оруулна уу */}
-                <ReactPlayer
-                  width={"100%"}
-                  height={600}
-                  url={"https://www.youtube.com/watch?v=M4sH0TvA1-M"}
-                />
-              </DialogContent>
-            </Dialog>
-          ))}
-        </CardContent>
-        {isValidating && (
-          <div className="flex justify-center items-center w-full h-96">
-            <LoadingSpinner size={36} />
-          </div>
-        )}
-      </Card>
+                </CardContent>
+              </Card>
+            </DialogTrigger>
+            <DialogContent className="!p-0 border-none max-w-[900px] text-white">
+              {/* TODO энд бичлэгний url сервисээс дуудаж оруулна уу */}
+              <ReactPlayer
+                width={"100%"}
+                height={600}
+                url={"https://www.youtube.com/watch?v=M4sH0TvA1-M"}
+              />
+            </DialogContent>
+          </Dialog>
+        ))}
+      </div>
+      {isValidating && (
+        <div className="flex justify-center items-center w-full h-96">
+          <LoadingSpinner size={36} />
+        </div>
+      )}
     </>
   );
 };

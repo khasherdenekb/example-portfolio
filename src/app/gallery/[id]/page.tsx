@@ -8,15 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import React from "react";
@@ -39,44 +31,45 @@ const GalleryDetail = () => {
 
   return (
     <>
-      <Card className="my-8">
-        <CardHeader className="text-center">
-          <CardTitle>Гарчиг...</CardTitle>
-          <CardDescription>Тайлбар...</CardDescription>
-        </CardHeader>
-        <CardContent className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-5">
-          {isLoading
-            ? arrayForLoading.map((item, key) => (
-                <React.Fragment key={key}>
-                  <GalleryDetailSkeleton />
-                </React.Fragment>
-              ))
-            : array30.map((el, key) => (
-                <Dialog key={key}>
-                  <DialogTrigger
-                    onClick={() => setIndexOfData(key)}
-                    className="rounded-xl"
-                    asChild
-                  >
-                    <Image
-                      unoptimized
-                      src="https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg"
-                      alt=""
-                      className="!h-96 cursor-pointer object-cover object-top inset-0 w-full transition duration-200"
-                      width={1000}
-                      height={475}
-                    />
-                  </DialogTrigger>
-                  <DialogContent className="max-w-sm xs:max-w-2xl md:max-w-3xl lg:max-w-4xl">
-                    <EmblaCarouselWithThumbnail
-                      indexOfData={indexOfData}
-                      slides={SLIDES}
-                    />
-                  </DialogContent>
-                </Dialog>
-              ))}
-        </CardContent>
-      </Card>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-8">
+        {isLoading
+          ? arrayForLoading.map((item, key) => (
+              <React.Fragment key={key}>
+                <GalleryDetailSkeleton />
+              </React.Fragment>
+            ))
+          : array30.map((el, key) => (
+              <Dialog key={key}>
+                <DialogTrigger
+                  onClick={() => setIndexOfData(key)}
+                  className="rounded-xl"
+                  asChild
+                >
+                  <Card>
+                    <CardHeader className="!text-center">
+                      <CardTitle>Гарчиг...</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <Image
+                        unoptimized
+                        src="https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg"
+                        alt=""
+                        className="!h-96 cursor-pointer object-cover object-top inset-0 w-full transition duration-200"
+                        width={1000}
+                        height={475}
+                      />
+                    </CardContent>
+                  </Card>
+                </DialogTrigger>
+                <DialogContent className="max-w-sm xs:max-w-2xl md:max-w-3xl lg:max-w-4xl">
+                  <EmblaCarouselWithThumbnail
+                    indexOfData={indexOfData}
+                    slides={SLIDES}
+                  />
+                </DialogContent>
+              </Dialog>
+            ))}
+      </div>
     </>
   );
 };

@@ -26,7 +26,8 @@ const fetcher = async (url: string) => {
 const getKey = (pageIndex: number, previousPageData: string) => {
   if (previousPageData && !previousPageData.length) return null;
 
-  return `https://api.thedogapi.com/v1/breeds?page=${pageIndex + 1}&limit=20`;
+  //TODO: random api ашиглаж жишээ байдлаар оруулав
+  return `https://api.thedogapi.com/v1/breeds?page=${pageIndex + 1}&limit=21`;
 };
 
 export const getVideos = () => {

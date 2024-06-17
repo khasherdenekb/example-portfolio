@@ -1,4 +1,4 @@
-import { FacebookIcon2 } from "@/components/custom/icons";
+import { FacebookIcon } from "@/components/custom/icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { LinkedinIcon, Mail, MapPin, Phone } from "lucide-react";
@@ -51,7 +51,7 @@ const ContactUs = () => {
                   <LinkedinIcon className=" text-muted-foreground cursor-pointer h-5 w-5" />
                 </Button>
                 <Button variant={"outline"} size={"icon"}>
-                  <FacebookIcon2 />
+                  <FacebookIcon />
                 </Button>
               </div>
             </div>

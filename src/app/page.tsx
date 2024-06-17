@@ -1,8 +1,7 @@
-import Hero from "@/components/shared/hero";
-import React from "react";
-import { LinkCategories } from "@/components/shared/link-categories";
-import HomeVideo from "@/components/shared/home-video";
-import HomeCaraousel from "@/components/shared/carousel/HomeCarousel";
+import { HomeCaraousel } from "@/components/shared/carousel/home-carousel";
+import { Hero } from "@/components/shared/layout/body/hero";
+import { HomeVideo } from "@/components/shared/layout/body/home-video";
+import { LinkCategories } from "@/components/shared/layout/body/link-categories";
 
 const Home = () => {
   return (

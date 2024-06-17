@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { PageTitle } from "../custom/page-title";
-import { getBannerData } from "../_actions";
-import { BlurImage } from "../custom/blur-image";
+import { PageTitle } from "../../../custom/page-helper";
+import { getHomeData } from "./_actions";
+import { BlurImage } from "../../../custom/blur-image";
 import { ERROR_MSG } from "@/lib/constants";
 
 type LinkCategoryProps = {
@@ -15,7 +15,7 @@ type LinkCategoryProps = {
 };
 
 export const LinkCategories = ({ type }: { type: string }) => {
-  const { linksData, programData, isLoading, isError } = getBannerData();
+  const { linksData, programData, isLoading, isError } = getHomeData();
   const listData = type == "category" ? linksData : programData;
 
   if (isError) return <p>{ERROR_MSG}</p>;

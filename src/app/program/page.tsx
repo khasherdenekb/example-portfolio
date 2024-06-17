@@ -1,10 +1,9 @@
 "use client";
-import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { getBannerData } from "@/components/_actions";
 import { BlurImage } from "@/components/custom/blur-image";
 import { ERROR_MSG } from "@/lib/constants";
+import { PageImage } from "@/components/custom/page-helper";
+import { getHomeData } from "@/components/shared/layout/body/_actions";
 
 type LinkCategoryProps = {
   id: number | string;
@@ -14,38 +13,21 @@ type LinkCategoryProps = {
 };
 
 const Programms = () => {
-  const { programData, isLoading, isError } = getBannerData();
+  const { programData, isLoading, isError } = getHomeData();
 
   if (isError) return <p>{ERROR_MSG}</p>;
 
   return (
-    <div className="h-fit w-full py-8">
-      <section className="relative mb-10 h-96">
-        <Image
-          unoptimized
-          src="/assets/gallery-background.jpeg"
-          alt="Background"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          className="z-0"
-        />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white font-mono">
-              Хөтөлбөрүүд
-            </p>
-          </div>
-        </div>
-      </section>
-      <section className="py-12 md:py-16 lg:py-20">
+    <>
+      <PageImage title="Хөтөлбөрүүд" />
+      <section className="py-12">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:gap-10">
           {programData?.map((link: LinkCategoryProps) => (
             <ProgrammsImages link={link} isLoading={isLoading} />
           ))}
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import EmblaCarousel from "./EmblaCarousel";
-import { getBannerData } from "@/components/_actions";
+import EmblaCarousel from "./embla-carousel";
 import { ERROR_MSG } from "@/lib/constants";
+import { getHomeData } from "../layout/body/_actions";
 
-const HomeCaraousel = ({ type }: { type: string }) => {
-  const { sliderData, isLoading, isError } = getBannerData();
+export const HomeCaraousel = ({ type }: { type: string }) => {
+  const { sliderData, isLoading, isError } = getHomeData();
   const sliders =
     type == "header"
       ? sliderData?.header?.[0]?.images
@@ -19,5 +19,3 @@ const HomeCaraousel = ({ type }: { type: string }) => {
     </div>
   );
 };
-
-export default HomeCaraousel;

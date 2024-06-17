@@ -45,11 +45,10 @@ export const EmblaCarouselWithThumbnail: React.FC<PropType> = (props) => {
   }, [emblaMainApi, onSelect, indexOfData]);
 
   return (
-    <div className="embla2 max-w-xs xs:max-w-md md:max-w-2xl lg:max-w-3xl">
+    <div className="embla2 relative max-w-xs xs:max-w-md md:max-w-2xl lg:max-w-3xl">
       {/* Title and description */}
       <div className="pb-2 text-center">
         <p className="text-xl">Гарчиг...</p>
-        <p className="text-muted-foreground text-sm">Тайлбар...</p>
       </div>
       <div className="embla__viewport" ref={emblaMainRef}>
         <div className="embla__container2">
@@ -71,26 +70,27 @@ export const EmblaCarouselWithThumbnail: React.FC<PropType> = (props) => {
                     layout="fill"
                     className="object-cover max-w-[860px]"
                   />
-                  <Button
-                    size={"icon"}
-                    onClick={() => onThumbClick(index - 1)}
-                    className="rounded-full absolute left-5 text-green-500 top-1/2 transform -translate-y-1/2 w-8 h-8"
-                  >
-                    <ChevronLeftIcon className="text-white" />
-                  </Button>
-                  <Button
-                    className="absolute right-1 top-1/2 transform -translate-y-1/2 text-green-500 w-8 h-8 rounded-full"
-                    size={"icon"}
-                    onClick={() => onThumbClick(index + 1)}
-                  >
-                    <ChevronRightIcon className="text-white" />
-                  </Button>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      <Button
+        size={"icon"}
+        onClick={() => onThumbClick(selectedIndex - 1)}
+        className="absolute -left-4 text-green-500 top-[45%] transform -translate-y-1/2 w-8 h-8 rounded-full"
+      >
+        <ChevronLeftIcon className="text-white" />
+      </Button>
+      <Button
+        className="absolute -right-4 top-[45%] transform -translate-y-1/2 text-green-500 w-8 h-8 rounded-full"
+        size={"icon"}
+        onClick={() => onThumbClick(selectedIndex + 1)}
+      >
+        <ChevronRightIcon className="text-white" />
+      </Button>
 
       <div className="embla-thumbs">
         <div className="embla-thumbs__viewport" ref={emblaThumbsRef}>
@@ -120,17 +120,19 @@ export const EmblaCarouselWithThumbnail: React.FC<PropType> = (props) => {
 type ThumbPropType = {
   selected: boolean;
   index: number;
+  key: number;
   onClick: () => void;
 };
 
 const Thumb: React.FC<ThumbPropType> = (props) => {
-  const { selected, onClick } = props;
+  const { selected, onClick, key } = props;
 
   return (
     <div
       className={"embla-thumbs__slide".concat(
         selected ? " embla-thumbs__slide--selected" : ""
       )}
+      key={key}
     >
       <button
         onClick={onClick}

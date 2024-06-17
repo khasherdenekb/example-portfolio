@@ -2,9 +2,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { getBannerData } from "@/components/_actions";
 import { BlurImage } from "@/components/custom/blur-image";
 import { ERROR_MSG } from "@/lib/constants";
+import { getHomeData } from "@/components/shared/layout/body/_actions";
 
 type LinkCategoryProps = {
   id: number | string;
@@ -14,7 +14,7 @@ type LinkCategoryProps = {
 };
 
 const Links = () => {
-  const { linksData, isLoading, isError } = getBannerData();
+  const { linksData, isLoading, isError } = getHomeData();
 
   if (isError) return <p>{ERROR_MSG}</p>;
 

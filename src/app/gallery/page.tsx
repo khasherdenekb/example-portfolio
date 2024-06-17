@@ -3,6 +3,7 @@ import React from "react";
 import { galleryCards } from "@/data/dummyData";
 import Link from "next/link";
 import Image from "next/image";
+import { PageImage } from "@/components/custom/page-helper";
 
 type GalleryCard = {
   thumbnail: string;
@@ -13,25 +14,8 @@ type GalleryCard = {
 
 const Gallery = () => {
   return (
-    <div className="h-fit w-full py-8">
-      <section className="relative mb-10 h-96 ">
-        <Image
-          unoptimized
-          src="/assets/gallery-background.jpeg"
-          alt="Background"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          className="z-0"
-        />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl text-white font-mono">
-              Зургийн цомог
-            </p>
-          </div>
-        </div>
-      </section>
+    <>
+      <PageImage title="Зургийн цомог" />
       <section className="py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:gap-10">
           {galleryCards?.map((card) => (
@@ -39,7 +23,7 @@ const Gallery = () => {
           ))}
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

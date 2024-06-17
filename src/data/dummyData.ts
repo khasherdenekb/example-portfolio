@@ -43,27 +43,3 @@ export const galleryCards = [
     description: "description ",
   },
 ];
-
-export const blogDetails = [
-  {
-    id: 1,
-    image: "/travel-banner3.jpg",
-    title: "The Power of Gratitude: Cultivating a Positive Mindset",
-    description:
-      "Learn how practicing gratitude can transform your outlook on life and foster a more positive and fulfilling existence.",
-  },
-  {
-    id: 2,
-    image: "/travel-banner2.jpg",
-    title: "The Power of Gratitude: Cultivating a Positive Mindset",
-    description:
-      "Learn how practicing gratitude can transform your outlook on life and foster a more positive and fulfilling existence.",
-  },
-  {
-    id: 3,
-    image: "/travel-banner1.jpg",
-    title: "The Power of Gratitude: Cultivating a Positive Mindset",
-    description:
-      "Learn how practicing gratitude can transform your outlook on life and foster a more positive and fulfilling existence.",
-  },
-];

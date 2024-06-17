@@ -22,7 +22,8 @@ export const BlurImage = ({
       className={cn(
         className,
         "relative overflow-hidden",
-        "bg-white rounded-xl h-full w-full"
+        "bg-white rounded-xl h-full w-full",
+        isLoading && "bg-muted"
       )}
       layout
     >
@@ -31,7 +32,7 @@ export const BlurImage = ({
         src={src}
         className={cn(
           "object-top absolute inset-0 h-full w-full transition duration-200",
-          !isLoading ? "blur-none" : "blur-md",
+          isLoading ? "blur-md" : "blur-none",
           isCover ? "object-cover" : "object-contain"
         )}
         layout="fill"

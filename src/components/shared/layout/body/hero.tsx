@@ -1,13 +1,13 @@
 "use client";
-import { Button } from "../ui/button";
+import { Button } from "../../../ui/button";
 import { ArrowUpRight } from "lucide-react";
-import { getBannerData } from "../_actions";
-import { BlurImage } from "../custom/blur-image";
+import { getHomeData } from "./_actions";
+import { BlurImage } from "../../../custom/blur-image";
 import { ERROR_MSG } from "@/lib/constants";
 import Link from "next/link";
 
-const Hero = () => {
-  const { bannerData, isLoading, isError } = getBannerData();
+export const Hero = () => {
+  const { bannerData, isLoading, isError } = getHomeData();
   const data = bannerData?.header?.[0];
   const imageUrl = data?.images?.[0];
 
@@ -52,5 +52,3 @@ const Hero = () => {
     </section>
   );
 };
-
-export default Hero;

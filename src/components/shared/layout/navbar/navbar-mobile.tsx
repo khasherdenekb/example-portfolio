@@ -39,7 +39,7 @@ export function NavbarMobile() {
               </li>
               {menuItem.subMenu.length > 0
                 ? menuItem.subMenu.map((subMenuItem) => (
-                    <li>
+                    <li key={subMenuItem?.id}>
                       <Link className="text-[#266431]" href={subMenuItem?.url}>
                         {subMenuItem?.title}
                       </Link>
