@@ -11,33 +11,30 @@ import { BlurImage } from "@/components/custom/blur-image";
 import { PageImage } from "@/components/custom/page-helper";
 
 const Videos = () => {
-  const { items, isLoading, isError, size, setSize, isValidating } =
-    getVideos();
-
+  const { data, isLoading, isError } = getVideos();
+console.log(data,'data')
   //TODO: бичлэг service-c дуудахдаа home-video component-с харна уу.
   //TODO: video thumbnail авах хэсэг.
   // const thumbnailUrl = video
   //   ? getYouTubeThumbnail(video.url)
   //   : "/default-thumbnail.jpg";
 
-  const thumbnailUrl = getYouTubeThumbnail(
-    "https://www.youtube.com/watch?v=M4sH0TvA1-M"
-  );
+  
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (
-        window.innerHeight + window.scrollY >=
-          document.body.offsetHeight - 500 &&
-        !isValidating
-      ) {
-        setSize(size + 1);
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (
+  //       window.innerHeight + window.scrollY >=
+  //         document.body.offsetHeight - 500 &&
+  //       !isValidating
+  //     ) {
+  //       setSize(size + 1);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [size, isValidating]);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, [size, isValidating]);
 
   if (isError) return <div>Failed to load</div>;
 
@@ -45,7 +42,7 @@ const Videos = () => {
     <>
       <PageImage title="Бичлэгүүд" />
       <div className="py-20 lg:py-5 gap-5 grid grid-cols-2">
-        {items.map((item, index) => (
+        {data.map((item: any, index: any) => (
           <Dialog>
             <DialogTrigger className="cursor-pointer" asChild>
               <Card className="relative ">
@@ -57,7 +54,7 @@ const Videos = () => {
                   <BlurImage
                     isLoading={isLoading}
                     className="rounded-3xl shadow-2xl transition-shadow duration-300 ease-in-out !h-[550px]"
-                    src={thumbnailUrl}
+                    src={getYouTubeThumbnail(item?.url)}
                     alt={"Video thumbnail"}
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -70,20 +67,11 @@ const Videos = () => {
             </DialogTrigger>
             <DialogContent className="!p-0 border-none max-w-[900px] text-white">
               {/* TODO энд бичлэгний url сервисээс дуудаж оруулна уу */}
-              <ReactPlayer
-                width={"100%"}
-                height={600}
-                url={"https://www.youtube.com/watch?v=M4sH0TvA1-M"}
-              />
+              <ReactPlayer width={"100%"} height={600} url={item?.url} />
             </DialogContent>
           </Dialog>
         ))}
       </div>
-      {isValidating && (
-        <div className="flex justify-center items-center w-full h-96">
-          <LoadingSpinner size={36} />
-        </div>
-      )}
     </>
   );
 };

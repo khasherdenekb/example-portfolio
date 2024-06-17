@@ -4,6 +4,8 @@ import { galleryCards } from "@/data/dummyData";
 import Link from "next/link";
 import Image from "next/image";
 import { PageImage } from "@/components/custom/page-helper";
+import { getGalleries } from "./_actions";
+import { ERROR_MSG } from "@/lib/constants";
 
 type GalleryCard = {
   thumbnail: string;
@@ -13,12 +15,15 @@ type GalleryCard = {
 };
 
 const Gallery = () => {
+  const { data, isLoading, isError } = getGalleries();
+
+  if (isError) return <p>{ERROR_MSG}</p>;
   return (
     <>
       <PageImage title="Зургийн цомог" />
       <section className="py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:gap-10">
-          {galleryCards?.map((card) => (
+          {data?.map((card: GalleryCard) => (
             <GalleryImage card={card} />
           ))}
         </div>

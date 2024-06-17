@@ -12,8 +12,10 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import React from "react";
+import { getGalleryItems } from "./_actions";
+import { ERROR_MSG } from "@/lib/constants";
 
-const SLIDES = Array.from(Array(20).keys());
+// const SLIDES = Array.from(Array(20).keys());
 
 const GalleryDetail = () => {
   //TODO: ID холбох заавар
@@ -21,24 +23,24 @@ const GalleryDetail = () => {
   //TODO: энд ID орж ирнэ
   //TODO: isError бөгөөд id байхгүй байвал 404 лүү буцаана
   const { id } = useParams();
-  console.log(id);
+  const { data, isError, isLoading } = getGalleryItems(id);
 
-  const array30 = Array(30).fill(null);
-  const arrayForLoading = Array(10).fill(null);
+  if (isError) return <p>{ERROR_MSG}</p>;
+
+  const array30 = data.slice(30).fill(null);
+  const arrayForLoading = data.slice(10).fill(null);
   const [indexOfData, setIndexOfData] = React.useState(0);
-
-  const isLoading = false;
 
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-8">
         {isLoading
-          ? arrayForLoading.map((item, key) => (
+          ? data.map((item: any, key: React.Key | null | undefined) => (
               <React.Fragment key={key}>
                 <GalleryDetailSkeleton />
               </React.Fragment>
             ))
-          : array30.map((el, key) => (
+          : data.map((el: any, key: number ) => (
               <Dialog key={key}>
                 <DialogTrigger
                   onClick={() => setIndexOfData(key)}
@@ -64,7 +66,7 @@ const GalleryDetail = () => {
                 <DialogContent className="max-w-sm xs:max-w-2xl md:max-w-3xl lg:max-w-4xl">
                   <EmblaCarouselWithThumbnail
                     indexOfData={indexOfData}
-                    slides={SLIDES}
+                    slides={data}
                   />
                 </DialogContent>
               </Dialog>
