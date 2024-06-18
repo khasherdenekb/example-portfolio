@@ -5,6 +5,7 @@ import Navbar from "@/components/shared/layout/navbar/navbar";
 import GoToTopButton from "@/components/custom/go-to-top";
 import "@/css/globals.css";
 import "@/css/embla.css";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,6 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-50`}>
+        <Toaster richColors position="top-right" />
         <main className="container relative">
           <Navbar />
           {children}
