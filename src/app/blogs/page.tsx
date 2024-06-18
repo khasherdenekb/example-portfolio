@@ -6,12 +6,9 @@ import { ERROR_MSG } from "@/lib/constants";
 import { Pagination } from "@nextui-org/pagination";
 import { Badge } from "@/components/ui/badge";
 import { BlurImage } from "@/components/custom/blur-image";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import {
-  BlogDetailFeatureSkeleton,
-  BlogSkeleton,
-} from "@/components/custom/skeletons";
+import { BlogSkeleton, DynamicSkeleton } from "@/components/custom/skeletons";
 
 type BlogFeatureDetailProps = {
   id: number | string;
@@ -59,9 +56,7 @@ const Blogs = () => {
             />
           </figure>
           {isLoading ? (
-            <>
-              <BlogSkeleton />
-            </>
+            <BlogSkeleton />
           ) : (
             <>
               <div className="space-y-2 not-prose ">
@@ -87,7 +82,9 @@ const Blogs = () => {
           <div className="grid gap-4">
             {isLoading
               ? loadingArray.map((_, index) => (
-                  <BlogDetailFeatureSkeleton key={index} />
+                  <React.Fragment key={index}>
+                    <DynamicSkeleton size="80" />
+                  </React.Fragment>
                 ))
               : data?.data
                   ?.slice(1)

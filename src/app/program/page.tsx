@@ -4,6 +4,8 @@ import { BlurImage } from "@/components/custom/blur-image";
 import { ERROR_MSG } from "@/lib/constants";
 import { PageImage } from "@/components/custom/page-helper";
 import { getHomeData } from "@/components/shared/layout/body/_actions";
+import React from "react";
+import { DynamicSkeleton } from "@/components/custom/skeletons";
 
 type LinkCategoryProps = {
   id: number | string;
@@ -14,17 +16,28 @@ type LinkCategoryProps = {
 
 const Programms = () => {
   const { programData, isLoading, isError } = getHomeData();
+  const loadingArray = new Array(8).fill(null);
 
   if (isError) return <p>{ERROR_MSG}</p>;
 
   return (
     <>
-      <PageImage title="Хөтөлбөрүүд" />
+      <PageImage isLoading={isLoading} title="Хөтөлбөрүүд" />
       <section className="py-12">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:gap-10">
-          {programData?.map((link: LinkCategoryProps) => (
-            <ProgrammsImages link={link} isLoading={isLoading} />
-          ))}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:gap-10">
+          {isLoading ? (
+            loadingArray.map((_, index) => (
+              <React.Fragment key={index}>
+                <DynamicSkeleton size="550" />
+              </React.Fragment>
+            ))
+          ) : (
+            <>
+              {programData?.map((link: LinkCategoryProps) => (
+                <ProgrammsImages link={link} isLoading={isLoading} />
+              ))}
+            </>
+          )}
         </div>
       </section>
     </>

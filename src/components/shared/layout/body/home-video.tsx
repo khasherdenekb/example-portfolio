@@ -3,17 +3,17 @@ import Image from "next/image";
 import { PlayCircleIcon } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { getHomeData } from "./_actions";
-import { VideoSkeleton } from "../../../custom/skeletons";
 import ReactPlayer from "react-player";
 import { getYouTubeThumbnail } from "@/lib/utils";
 import { ERROR_MSG } from "@/lib/constants";
+import { DynamicSkeleton } from "@/components/custom/skeletons";
 
 export function HomeVideo({ type }: { type: string }) {
   const { videosData, isLoading, isError } = getHomeData();
 
   const video = type === "header" ? videosData?.header : videosData?.footer;
 
-  if (isLoading) return <VideoSkeleton />;
+  if (isLoading) return <DynamicSkeleton size="600" />;
 
   if (isError) return <p>{ERROR_MSG}</p>;
 

@@ -1,25 +1,12 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
-export const VideoSkeleton = () => {
+export const DynamicSkeleton = ({ size }: { size: string }) => {
   return (
     <div className="flex flex-col space-y-3">
-      <Skeleton className="h-[600px] w-full rounded-xl bg-slate-200" />
-    </div>
-  );
-};
-
-export const PageSlugSkeleton = () => {
-  return (
-    <div className="flex flex-col space-y-3">
-      <Skeleton className="h-[600px] w-full rounded-xl bg-slate-200" />
-    </div>
-  );
-};
-
-export const GalleryDetailSkeleton = () => {
-  return (
-    <div className="flex flex-col space-y-3">
-      <Skeleton className="h-[475px] w-full rounded-xl bg-slate-200" />
+      <Skeleton
+        className="w-full rounded-xl bg-slate-200"
+        style={{ height: `${size}px` }}
+      />
     </div>
   );
 };
@@ -32,14 +19,6 @@ export const BlogDetailSkeleton = () => {
         <Skeleton className="h-4 w-[300px]" />
         <Skeleton className="h-4 w-[250px]" />
       </div>
-    </div>
-  );
-};
-
-export const BlogDetailFeatureSkeleton = ({ key }: { key?: number }) => {
-  return (
-    <div className="flex flex-col space-y-3" key={key}>
-      <Skeleton className="h-20 w-full rounded-xl" />
     </div>
   );
 };

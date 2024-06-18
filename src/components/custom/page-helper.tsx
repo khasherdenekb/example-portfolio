@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import React from "react";
+import { BlurImage } from "./blur-image";
 
 type PageTitleProps = {
   title: string;
@@ -20,17 +20,19 @@ export const PageTitle = ({ title, className }: PageTitleProps) => {
   );
 };
 
-export const PageImage = ({ title }: { title: string }) => {
+export const PageImage = ({
+  title,
+  isLoading,
+}: {
+  title: string;
+  isLoading: boolean;
+}) => {
   return (
     <section className="relative h-96 my-8">
-      <Image
-        unoptimized
+      <BlurImage
+        isLoading={isLoading}
         src="/assets/gallery-background.jpeg"
         alt="Background"
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center"
-        className="z-0"
       />
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center">

@@ -15,7 +15,7 @@ export const Hero = () => {
 
   return (
     <section className="relative bg-center bg-no-repeat bg-cover h-[750px] w-full mt-5">
-      <BlurImage src={imageUrl} alt="Banner Image" isLoading={isLoading} />
+      <BlurImage src={imageUrl} alt={imageUrl} isLoading={isLoading} />
       <div className="absolute inset-0">
         <div className="mx-auto my-80 lg:my-0 lg:justify-end lg:items-center max-w-screen-xl px-4 py-16 sm:px-6 lg:flex lg:h-[750px] lg:px-8">
           {!isLoading && (

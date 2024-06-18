@@ -4,8 +4,8 @@ import { getAbout } from "../_actions";
 import { PageTitle } from "@/components/custom/page-helper";
 import { Card, CardContent } from "@/components/ui/card";
 import { BlurImage } from "@/components/custom/blur-image";
-import { PageSlugSkeleton } from "@/components/custom/skeletons";
 import { ERROR_MSG } from "@/lib/constants";
+import { DynamicSkeleton } from "@/components/custom/skeletons";
 
 const AboutSlug = () => {
   const { slug } = useParams();
@@ -21,7 +21,7 @@ const AboutSlug = () => {
           title={isLoading ? "Уншиж байна..." : data.title}
         />
         {isLoading ? (
-          <PageSlugSkeleton />
+          <DynamicSkeleton size="750" />
         ) : (
           <div
             className="pb-2"
