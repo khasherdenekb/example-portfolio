@@ -51,7 +51,7 @@ const ContactUs = () => {
                   <LinkedinIcon className=" text-muted-foreground cursor-pointer h-5 w-5" />
                 </Button>
                 <Button variant={"outline"} size={"icon"}>
-                  <FacebookIcon />
+                  <FacebookIcon className=" text-muted-foreground cursor-pointer h-5 w-5" />
                 </Button>
               </div>
             </div>
