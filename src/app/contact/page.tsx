@@ -1,10 +1,71 @@
-import { FacebookIcon } from "@/components/custom/icons";
+"use client";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  YoutubeIcon,
+} from "@/components/custom/icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { LinkedinIcon, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { addContactInfo } from "./_actions";
+import { toast } from "sonner";
+
+const phoneRegex = new RegExp(
+  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
+);
+const wrongPhoneNumberMessage = "Утасны дугаар буруу байна!";
+
+const formSchema = z.object({
+  name: z
+    .string()
+    .min(2, { message: "Нэр хамгийн багадаа 2 тэмдэгт байх ёстой" })
+    .max(30, { message: "Нэр хамгийн ихдээ 30 тэмдэгт байх ёстой" }),
+  email: z.string().email({ message: "Зөв имэйл хаяг оруулна уу" }),
+  phone: z
+    .string()
+    .regex(phoneRegex, { message: wrongPhoneNumberMessage })
+    .min(8, { message: wrongPhoneNumberMessage })
+    .max(8, { message: wrongPhoneNumberMessage }),
+  feedback: z
+    .string()
+    .max(250, { message: "Санал хамгийн ихдээ 250 тэмдэгт байх ёстой" })
+    .optional(),
+});
 
 const ContactUs = () => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      feedback: "",
+    },
+  });
+
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    const result = await addContactInfo(values);
+    if (result.code === 200) {
+      toast.success(result.message);
+      form.reset();
+    } else {
+      toast.error(`Амжилтгүй: ${result.message}`);
+    }
+  };
+
   return (
     <Card className="bg-white dark:bg-gray-900 my-8">
       <div className="px-6 py-12 mx-auto">
@@ -18,15 +79,13 @@ const ContactUs = () => {
             <div className="mt-6 space-y-8 md:mt-8">
               <p className="flex items-start -mx-2">
                 <MapPin className="w-6 h-6 mx-2 text-green-400" />
-
                 <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
-                  Ulaanbaatar mongolia
+                  Ulaanbaatar, Mongolia
                 </span>
               </p>
 
               <p className="flex items-start -mx-2">
                 <Phone className="w-6 h-6 mx-2 text-green-400" />
-
                 <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
                   (976) 99998888
                 </span>
@@ -34,7 +93,6 @@ const ContactUs = () => {
 
               <p className="flex items-start -mx-2">
                 <Mail className="w-6 h-6 mx-2 text-green-400" />
-
                 <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
                   acb@example.com
                 </span>
@@ -42,16 +100,19 @@ const ContactUs = () => {
             </div>
 
             <div className="mt-6 w-80 md:mt-8">
-              <h3 className="text-gray-600 dark:text-gray-300 ">
+              <h3 className="text-gray-600 dark:text-gray-300">
                 Олон нийтийн хаягууд
               </h3>
 
-              <div className="flex pt-4 -px-1.5 gap-3 ">
+              <div className="flex pt-4 -px-1.5 gap-3">
                 <Button variant={"outline"} size={"icon"}>
-                  <LinkedinIcon className=" text-muted-foreground cursor-pointer h-5 w-5" />
+                  <FacebookIcon className="text-muted-foreground cursor-pointer h-5 w-5" />
                 </Button>
                 <Button variant={"outline"} size={"icon"}>
-                  <FacebookIcon className=" text-muted-foreground cursor-pointer h-5 w-5" />
+                  <InstagramIcon className="text-muted-foreground cursor-pointer h-5 w-5" />
+                </Button>
+                <Button variant={"outline"} size={"icon"}>
+                  <YoutubeIcon className="text-muted-foreground cursor-pointer h-5 w-5" />
                 </Button>
               </div>
             </div>
@@ -59,47 +120,78 @@ const ContactUs = () => {
 
           <div className="mt-8 lg:w-1/2 lg:mx-6">
             <div className="w-full px-8 py-10 mx-auto overflow-hidden rounded-lg shadow-2xl dark:bg-gray-900 lg:max-w-xl shadow-gray-300/50 dark:shadow-black/50 border">
-              <h1 className="text-lg font-medium text-gray-700">
+              <h1 className="text-lg font-medium text-slate-600 my-5">
                 Та юу асуумаар байгаагаа энд бичээрэй
               </h1>
-
-              <form className="mt-6">
-                <div className="flex-1">
-                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                    Бүтэн нэр
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Example Name"
-                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-8"
+                >
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Нэр</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Example Name..." {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
-
-                <div className="flex-1 mt-6">
-                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                    Имэйл хаяг
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="example@example.com"
-                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Утасны дугаар</FormLabel>
+                        <FormControl>
+                          <Input placeholder="987654321..." {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
-                </div>
-
-                <div className="w-full mt-6">
-                  <label className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
-                    Санал
-                  </label>
-                  <textarea
-                    className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                    placeholder="Message"
-                  ></textarea>
-                </div>
-
-                <Button className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform focus:outline-none focus:ring  focus:ring-opacity-50">
-                  Холбогдох
-                </Button>
-              </form>
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Имэйл хаяг</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="example@example.com..."
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="feedback"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Санал хүсэлт</FormLabel>
+                        <FormControl>
+                          <textarea
+                            className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40"
+                            placeholder="Message..."
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button type="submit" className="w-full">
+                    Илгээх
+                  </Button>
+                </form>
+              </Form>
             </div>
           </div>
         </div>

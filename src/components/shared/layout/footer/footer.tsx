@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import {
   FacebookIcon,
   InstagramIcon,
-  LinkedinIcon,
+  YoutubeIcon,
 } from "@/components/custom/icons";
 
 export default function Footer(): JSX.Element {
@@ -42,7 +42,7 @@ export default function Footer(): JSX.Element {
               className="text-gray-400 hover:text-gray-300"
               prefetch={false}
             >
-              <LinkedinIcon className="h-5 w-5" />
+              <YoutubeIcon className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>
           </div>
