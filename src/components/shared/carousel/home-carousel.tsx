@@ -2,10 +2,10 @@
 import React from "react";
 import EmblaCarousel from "./embla-carousel";
 import { ERROR_MSG } from "@/lib/constants";
-import { getHomeData } from "../layout/body/_actions";
+import { GetHomeData } from "../layout/body/_actions";
 
 export const HomeCaraousel = ({ type }: { type: string }) => {
-  const { sliderData, isLoading, isError } = getHomeData();
+  const { sliderData, isLoading, isError } = GetHomeData();
   const sliders =
     type == "header"
       ? sliderData?.header?.[0]?.images

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { BlurImage } from "@/components/custom/blur-image";
 import { ERROR_MSG } from "@/lib/constants";
-import { getHomeData } from "@/components/shared/layout/body/_actions";
+import { GetHomeData } from "@/components/shared/layout/body/_actions";
 
 type LinkCategoryProps = {
   id: number | string;
@@ -14,7 +14,7 @@ type LinkCategoryProps = {
 };
 
 const Links = () => {
-  const { linksData, isLoading, isError } = getHomeData();
+  const { linksData, isLoading, isError } = GetHomeData();
 
   if (isError) return <p>{ERROR_MSG}</p>;
 
@@ -41,7 +41,7 @@ const Links = () => {
       <section className="py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:gap-10">
           {linksData?.map((link: LinkCategoryProps) => (
-            <LinkImages link={link} isLoading={isLoading} />
+            <LinkImages link={link} isLoading={isLoading} key={link.id} />
           ))}
         </div>
       </section>
@@ -52,12 +52,14 @@ const Links = () => {
 const LinkImages = ({
   link,
   isLoading,
+  key,
 }: {
   link: LinkCategoryProps;
   isLoading: boolean;
+  key: number | string;
 }) => {
   return (
-    <Link key={link.id} href={link?.url || "#"} target="_blank">
+    <Link key={key} href={link?.url || "#"} target="_blank">
       <div className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl cursor-pointer j">
         <BlurImage
           className="!h-[30rem] w-full object-cover transition-all duration-300 ease-in-out hover:scale-105 rounded-lg p-[2px]"

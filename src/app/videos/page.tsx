@@ -1,7 +1,7 @@
 "use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import React, { useEffect } from "react";
-import { getVideos } from "./_actions";
+import { GetVideos } from "./_actions";
 import { PlayCircleIcon } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import ReactPlayer from "react-player";
@@ -12,11 +12,8 @@ import { PageImage } from "@/components/custom/page-helper";
 import { DynamicSkeleton } from "@/components/custom/skeletons";
 
 const Videos = () => {
-  const { data, isLoading, isError } = getVideos();
+  const { data, isLoading, isError } = GetVideos();
   const loadingArray = new Array(10).fill(null);
-  // const thumbnailUrl = video
-  //   ? getYouTubeThumbnail(video.url)
-  //   : "/default-thumbnail.jpg";
 
   // useEffect(() => {
   //   const handleScroll = () => {
@@ -48,11 +45,11 @@ const Videos = () => {
         ) : (
           <>
             {data?.map((item: any, index: any) => (
-              <Dialog>
+              <Dialog key={index}>
                 <DialogTrigger className="cursor-pointer" asChild>
                   <Card className="relative ">
                     <CardHeader className="!text-center">
-                      <CardTitle>Гарчиг...</CardTitle>
+                      <CardTitle className="text-lg">{item.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <BlurImage

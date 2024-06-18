@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-//TODO: url dran env gees avdag bolgoh
 export const metadata: Metadata = {
   title: "videos",
   description: "videos",

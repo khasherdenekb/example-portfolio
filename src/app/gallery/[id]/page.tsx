@@ -4,21 +4,31 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import React from "react";
-import { getGalleryItems } from "./_actions";
+import React, { useState } from "react";
+import { GetGalleryItems } from "./_actions";
 import { ERROR_MSG } from "@/lib/constants";
 import { DynamicSkeleton } from "@/components/custom/skeletons";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 const GalleryDetail = () => {
   const { id } = useParams();
-  const { data, isError, isLoading } = getGalleryItems(id);
+  const { data, isError, isLoading } = GetGalleryItems(id);
   const loadingArray = new Array(10).fill(null);
+  const [indexOfData, setIndexOfData] = useState(0);
 
   if (isError) return <p>{ERROR_MSG}</p>;
-  const [indexOfData, setIndexOfData] = React.useState(0);
 
   return (
     <>
+      <div>
+        <Link href={"/gallery"}>
+          <Button className="absolute top-[76px] rounded-full" size={"icon"}>
+            <ArrowLeft />
+          </Button>
+        </Link>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-8">
         {isLoading
           ? loadingArray?.map((item: any, key: React.Key) => (

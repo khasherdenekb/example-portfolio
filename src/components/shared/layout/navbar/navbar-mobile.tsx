@@ -4,12 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { getMenuData } from "./_actions";
+import { GetMenuData } from "./_actions";
 import { LoadingSpinner } from "@/components/custom/loading-spinner";
 import { ERROR_MSG } from "@/lib/constants";
+import React from "react";
 
 export function NavbarMobile() {
-  const { menuData, isLoading, isError } = getMenuData();
+  const { menuData, isLoading, isError } = GetMenuData();
 
   if (isLoading) {
     return (
@@ -31,7 +32,7 @@ export function NavbarMobile() {
       <SheetContent>
         <ul className="flex flex-col gap-4">
           {menuData.map((menuItem) => (
-            <>
+            <React.Fragment key={menuItem?.id}>
               <li>
                 <Link className="text-[#266431]" href={menuItem?.url}>
                   {menuItem?.title}
@@ -46,7 +47,7 @@ export function NavbarMobile() {
                     </li>
                   ))
                 : null}
-            </>
+            </React.Fragment>
           ))}
         </ul>
       </SheetContent>

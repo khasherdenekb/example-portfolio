@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { getBlogs } from "./_actions";
+import { GetBlogs } from "./_actions";
 import { Card, CardContent } from "@/components/ui/card";
 import { ERROR_MSG } from "@/lib/constants";
 import { Pagination } from "@nextui-org/pagination";
@@ -26,14 +26,14 @@ const Blogs = () => {
 
   const [page, setPage] = useState(searchParams.get("page") || "1");
 
-  const { data, isError, isLoading } = getBlogs(page);
+  const { data, isError, isLoading } = GetBlogs(page);
 
   useEffect(() => {
     const currentParams = new URLSearchParams(window.location.search);
     if (currentParams.get("page") !== page) {
       setPage(currentParams.get("page") || "1");
     }
-  }, [searchParams]);
+  }, [searchParams, page]);
 
   const handlePageChange = (newPage: string) => {
     const currentParams = new URLSearchParams(window.location.search);
@@ -90,9 +90,9 @@ const Blogs = () => {
                   ?.slice(1)
                   ?.map((blog: BlogFeatureDetailProps) => (
                     <BlogFeatureDetail
-                      key={blog.id}
                       blog={blog}
                       isLoading={isLoading}
+                      key={blog.id}
                     />
                   ))}
           </div>
@@ -115,14 +115,17 @@ const Blogs = () => {
 const BlogFeatureDetail = ({
   blog,
   isLoading,
+  key,
 }: {
   blog: BlogFeatureDetailProps;
   isLoading: boolean;
+  key: number | string;
 }) => {
   return (
     <Link
       href={`/blogs/${blog.id}`}
       className="grid grid-cols-[120px_1fr] gap-4"
+      key={key}
     >
       <BlurImage
         src={blog?.image}

@@ -12,12 +12,12 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { getMenuData } from "./_actions";
+import { GetMenuData } from "./_actions";
 import { LoadingSpinner } from "@/components/custom/loading-spinner";
 import { ERROR_MSG } from "@/lib/constants";
 
 export function NavbarMenu() {
-  const { menuData, isLoading, isError } = getMenuData();
+  const { menuData, isLoading, isError } = GetMenuData();
 
   if (isLoading) {
     return (

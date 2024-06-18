@@ -1,17 +1,17 @@
 "use client";
 import { BlurImage } from "@/components/custom/blur-image";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
-import { getBlogId } from "./_actions";
+import { GetBlogId } from "./_actions";
 import { ERROR_MSG } from "@/lib/constants";
 import { BlogDetailSkeleton } from "@/components/custom/skeletons";
 
 const BlogDetail = () => {
   const router = useRouter();
   const { id } = useParams();
-  const { data, isError, isLoading } = getBlogId(id);
+  const { data, isError, isLoading } = GetBlogId(id);
 
   if (isError) return <p>{ERROR_MSG}</p>;
 

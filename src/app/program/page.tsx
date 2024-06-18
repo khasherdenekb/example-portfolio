@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BlurImage } from "@/components/custom/blur-image";
 import { ERROR_MSG } from "@/lib/constants";
 import { PageImage } from "@/components/custom/page-helper";
-import { getHomeData } from "@/components/shared/layout/body/_actions";
+import { GetHomeData } from "@/components/shared/layout/body/_actions";
 import React from "react";
 import { DynamicSkeleton } from "@/components/custom/skeletons";
 
@@ -15,7 +15,7 @@ type LinkCategoryProps = {
 };
 
 const Programms = () => {
-  const { programData, isLoading, isError } = getHomeData();
+  const { programData, isLoading, isError } = GetHomeData();
   const loadingArray = new Array(8).fill(null);
 
   if (isError) return <p>{ERROR_MSG}</p>;
@@ -34,7 +34,11 @@ const Programms = () => {
           ) : (
             <>
               {programData?.map((link: LinkCategoryProps) => (
-                <ProgrammsImages link={link} isLoading={isLoading} />
+                <ProgrammsImages
+                  key={link.id}
+                  link={link}
+                  isLoading={isLoading}
+                />
               ))}
             </>
           )}
@@ -47,12 +51,14 @@ const Programms = () => {
 const ProgrammsImages = ({
   link,
   isLoading,
+  key,
 }: {
   link: LinkCategoryProps;
   isLoading: boolean;
+  key: number | string;
 }) => {
   return (
-    <Link key={link.id} href={link?.url || "#"} target="_blank">
+    <Link key={key} href={link?.url || "#"} target="_blank">
       <div className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl cursor-pointer j">
         <BlurImage
           className="!h-[30rem] w-full object-cover transition-all duration-300 ease-in-out hover:scale-105 rounded-lg p-[2px]"

@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { PageTitle } from "../../../custom/page-helper";
-import { getHomeData } from "./_actions";
+import { GetHomeData } from "./_actions";
 import { BlurImage } from "../../../custom/blur-image";
 import { ERROR_MSG } from "@/lib/constants";
 
@@ -15,7 +15,7 @@ type LinkCategoryProps = {
 };
 
 export const LinkCategories = ({ type }: { type: string }) => {
-  const { linksData, programData, isLoading, isError } = getHomeData();
+  const { linksData, programData, isLoading, isError } = GetHomeData();
   const listData = type == "category" ? linksData : programData;
 
   if (isError) return <p>{ERROR_MSG}</p>;

@@ -17,7 +17,7 @@ const fetcher = async (url: string) => {
   }).then((res) => res.json());
 };
 
-export function getGalleries() {
+export function GetGalleries() {
   const { data, error, isLoading } = useSWR(
     `${API_URL}/api/v1/category/getCategoryList`,
     fetcher

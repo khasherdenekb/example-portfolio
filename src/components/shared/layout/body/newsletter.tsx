@@ -1,11 +1,18 @@
 "use client";
 import { Button } from "../../../ui/button";
 import { Input } from "../../../ui/input";
+import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export const Newsletter = () => {
+  const pathname = usePathname();
+  const [email, setEmail] = useState<string>("");
+  const router = useRouter();
   const handleSubmit = (e: any) => {
     e.preventDefault();
   };
+
+  if (pathname === "/contact") return;
 
   return (
     <>
@@ -28,8 +35,18 @@ export const Newsletter = () => {
             placeholder="Имэйл оруулах..."
             className="bg-muted/50 dark:bg-muted/80 "
             aria-label="email"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
           />
-          <Button className="bg-[#2A6F37]">Бүртгүүлэх</Button>
+          <Button
+            onClick={() => {
+              router.push(`/contact?email=${email}`);
+            }}
+            className="bg-[#2A6F37]"
+          >
+            Бүртгүүлэх
+          </Button>
         </form>
       </div>
     </>

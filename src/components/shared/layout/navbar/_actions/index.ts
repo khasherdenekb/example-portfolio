@@ -29,7 +29,7 @@ const fetcher = (url: string) => {
   }).then((res) => res.json());
 };
 
-export function getMenuData() {
+export function GetMenuData() {
   const { data, error, isLoading } = useSWR<MenuData>(
     `${API_URL}/api/v1/menu/getAllList`,
     fetcher

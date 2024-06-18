@@ -15,7 +15,7 @@ const fetcher = async (url: string, slug: string) => {
   }).then((res) => res.json());
 };
 
-export function getAbout(slug: string) {
+export function GetAbout(slug: string) {
   const { data, error, isLoading } = useSWR(
     `${API_URL}/api/v1/menu/getPages`,
     (url) => fetcher(url, slug)

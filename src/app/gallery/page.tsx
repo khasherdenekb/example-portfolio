@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { PageImage } from "@/components/custom/page-helper";
-import { getGalleries } from "./_actions";
+import { GetGalleries } from "./_actions";
 import { ERROR_MSG } from "@/lib/constants";
 import { BlurImage } from "@/components/custom/blur-image";
 import { DynamicSkeleton } from "@/components/custom/skeletons";
@@ -15,7 +15,7 @@ type GalleryCard = {
 };
 
 const Gallery = () => {
-  const { data, isLoading, isError } = getGalleries();
+  const { data, isLoading, isError } = GetGalleries();
   if (isError) return <p>{ERROR_MSG}</p>;
   const loadingArray = new Array(10).fill(null);
 
@@ -31,7 +31,11 @@ const Gallery = () => {
                 </React.Fragment>
               ))
             : data?.map((card: GalleryCard) => (
-                <GalleryImage isLoading={isLoading} card={card} />
+                <GalleryImage
+                  isLoading={isLoading}
+                  card={card}
+                  key={card?.id}
+                />
               ))}
         </div>
       </section>
@@ -42,12 +46,14 @@ const Gallery = () => {
 const GalleryImage = ({
   card,
   isLoading,
+  key,
 }: {
   card: GalleryCard;
   isLoading: boolean;
+  key: string | number;
 }) => {
   return (
-    <Link key={card.id} href={`/gallery/${card.id}`}>
+    <Link key={key} href={`/gallery/${card?.id}`}>
       <div className="group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl cursor-pointer">
         <BlurImage
           src={card.thumbnail}

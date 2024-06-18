@@ -18,7 +18,7 @@ const fetcher = async (url: string, page: string | string[]) => {
   }).then((res) => res.json());
 };
 
-export function getBlogs(page: string | string[]) {
+export function GetBlogs(page: string | string[]) {
   const { data, error, isLoading } = useSWR(
     [`${API_URL}/api/v1/news/getPages`, page],
     ([url, id]) => fetcher(url, page)

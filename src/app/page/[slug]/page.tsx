@@ -1,6 +1,6 @@
 "use client";
 import { useParams } from "next/navigation";
-import { getAbout } from "../_actions";
+import { GetAbout } from "../_actions";
 import { PageTitle } from "@/components/custom/page-helper";
 import { Card, CardContent } from "@/components/ui/card";
 import { BlurImage } from "@/components/custom/blur-image";
@@ -9,7 +9,7 @@ import { DynamicSkeleton } from "@/components/custom/skeletons";
 
 const AboutSlug = () => {
   const { slug } = useParams();
-  const { data, isError, isLoading } = getAbout(slug?.toString());
+  const { data, isError, isLoading } = GetAbout(slug?.toString());
 
   if (isError) return <p>{ERROR_MSG}</p>;
 

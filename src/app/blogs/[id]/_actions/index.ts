@@ -17,7 +17,7 @@ const fetcher = async (url: string, id: string | string[]) => {
   }).then((res) => res.json());
 };
 
-export function getBlogId(id: string | string[]) {
+export function GetBlogId(id: string | string[]) {
   const { data, error, isLoading } = useSWR(
     [`${API_URL}/api/v1/news/getNewsById`, id],
     ([url, id]) => fetcher(url, id)
