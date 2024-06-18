@@ -29,8 +29,6 @@ export const EmblaCarouselWithThumbnail: React.FC<PropType> = (props) => {
     dragFree: true,
   });
 
-  console.log(slides);
-
   const onThumbClick = useCallback(
     (index: number) => {
       if (!emblaMainApi || !emblaThumbsApi) return;
