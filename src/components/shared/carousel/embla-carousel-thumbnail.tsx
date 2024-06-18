@@ -55,7 +55,7 @@ export const EmblaCarouselWithThumbnail: React.FC<PropType> = (props) => {
     <div className="embla2 relative max-w-xs xs:max-w-md md:max-w-2xl lg:max-w-3xl w-full">
       {/* Title and description */}
       <div className="pb-2 text-center">
-        <p className="text-xl">Гарчиг...</p>
+        <p className="text-xl">{slides&&slides[selectedIndex]?.title}</p>
       </div>
       <div className="embla__viewport" ref={emblaMainRef}>
         <div className="embla__container2">
