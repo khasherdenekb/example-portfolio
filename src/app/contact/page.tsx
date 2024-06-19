@@ -14,7 +14,6 @@ import { z } from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -33,6 +32,7 @@ import {
   WORK_PHONE,
   YT_URL,
 } from "@/lib/constants";
+import Image from "next/image";
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
@@ -117,6 +117,14 @@ const ContactUs = () => {
                 </span>
               </p>
             </div>
+
+            <Image
+              src={"/assets/contact-web.jpeg"}
+              alt="contact-web"
+              width={150}
+              height={150}
+              className="my-5"
+            />
 
             <div className="mt-6 w-80 md:mt-8">
               <h3 className="text-gray-600 dark:text-gray-300">

@@ -13,11 +13,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Baasanjav & Herbalife",
   description: "Welcome to my portfolio",
-  icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
-  },
   openGraph: {
     images: [
       {
