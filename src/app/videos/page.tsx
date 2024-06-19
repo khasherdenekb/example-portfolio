@@ -1,36 +1,39 @@
 "use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { GetVideos } from "./_actions";
 import { PlayCircleIcon } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import ReactPlayer from "react-player";
 import { getYouTubeThumbnail } from "@/lib/utils";
-import { LoadingSpinner } from "@/components/custom/loading-spinner";
 import { BlurImage } from "@/components/custom/blur-image";
 import { PageImage } from "@/components/custom/page-helper";
 import { DynamicSkeleton } from "@/components/custom/skeletons";
+import { Pagination } from "@nextui-org/pagination";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Videos = () => {
-  const { data, isLoading, isError } = GetVideos();
-  const loadingArray = new Array(10).fill(null);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (
-  //       window.innerHeight + window.scrollY >=
-  //         document.body.offsetHeight - 500 &&
-  //       !isValidating
-  //     ) {
-  //       setSize(size + 1);
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, [size, isValidating]);
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const [page, setPage] = useState(searchParams.get("page") || "1");
+  const loadingArray = new Array(6).fill(null);
+  const { data, isLoading, isError } = GetVideos(page);
 
   if (isError) return <div>Failed to load</div>;
+
+  const handlePageChange = (newPage: string) => {
+    const currentParams = new URLSearchParams(window.location.search);
+    currentParams.set("page", newPage);
+    router.push(`${pathname}?${currentParams.toString()}`);
+  };
+
+  useEffect(() => {
+    const currentParams = new URLSearchParams(window.location.search);
+    if (currentParams.get("page") !== page) {
+      setPage(currentParams.get("page") || "1");
+    }
+  }, [searchParams, page]);
 
   return (
     <>
@@ -44,7 +47,7 @@ const Videos = () => {
           ))
         ) : (
           <>
-            {data?.map((item: any, index: any) => (
+            {data?.data?.map((item: any, index: any) => (
               <Dialog key={index}>
                 <DialogTrigger className="cursor-pointer" asChild>
                   <Card className="relative ">
@@ -74,6 +77,16 @@ const Videos = () => {
           </>
         )}
       </div>
+      <Card className="p-2">
+        <Pagination
+          showControls
+          color="success"
+          total={data?.totalPages}
+          initialPage={Number(1)}
+          onChange={(e) => handlePageChange(e.toString())}
+          variant={"flat"}
+        />
+      </Card>
     </>
   );
 };

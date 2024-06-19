@@ -6,7 +6,7 @@ import {
 } from "@/components/custom/icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, PhoneCall } from "lucide-react";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,7 +24,14 @@ import { addContactInfo } from "./_actions";
 import { toast } from "sonner";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { FB_URL, IG_URL, YT_URL } from "@/lib/constants";
+import {
+  EMAIL_ADDRESS,
+  FB_URL,
+  IG_URL,
+  PRIMARY_PHONE,
+  WORK_PHONE,
+  YT_URL,
+} from "@/lib/constants";
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
@@ -91,14 +98,21 @@ const ContactUs = () => {
               <p className="flex items-start -mx-2">
                 <Phone className="w-6 h-6 mx-2 text-green-400" />
                 <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
-                  (976) 99998888
+                  {PRIMARY_PHONE}
+                </span>
+              </p>
+
+              <p className="flex items-start -mx-2">
+                <PhoneCall className="w-6 h-6 mx-2 text-green-400" />
+                <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
+                  {WORK_PHONE}
                 </span>
               </p>
 
               <p className="flex items-start -mx-2">
                 <Mail className="w-6 h-6 mx-2 text-green-400" />
                 <span className="mx-2 text-gray-700 truncate w-72 dark:text-gray-400">
-                  acb@example.com
+                  {EMAIL_ADDRESS}
                 </span>
               </p>
             </div>
