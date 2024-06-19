@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "/travel-banner3.jpg",
+        url: "/assets/travel-world.jpg",
         width: 1200,
         height: 630,
         alt: "gallery",
