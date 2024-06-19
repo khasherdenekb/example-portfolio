@@ -10,7 +10,7 @@ const Navbar = () => {
       <aside>
         <Link href={"/"} className="flex items-center gap-2">
           <HomeIcon className="w-5 h-5" />
-          <h2 className="text-sm font-semibold tracking-normal scroll-m-20 lg:text-lg first:mt-0">
+          <h2 className="text-sm font-semibold tracking-normal scroll-m-20 lg:text-[16px] first:mt-0">
             С. Баасанжав
           </h2>
         </Link>

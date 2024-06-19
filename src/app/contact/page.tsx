@@ -23,6 +23,8 @@ import { Input } from "@/components/ui/input";
 import { addContactInfo } from "./_actions";
 import { toast } from "sonner";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { FB_URL, IG_URL, YT_URL } from "@/lib/constants";
 
 const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
@@ -107,15 +109,21 @@ const ContactUs = () => {
               </h3>
 
               <div className="flex pt-4 -px-1.5 gap-3">
-                <Button variant={"outline"} size={"icon"}>
-                  <FacebookIcon className="text-muted-foreground cursor-pointer h-5 w-5" />
-                </Button>
-                <Button variant={"outline"} size={"icon"}>
-                  <InstagramIcon className="text-muted-foreground cursor-pointer h-5 w-5" />
-                </Button>
-                <Button variant={"outline"} size={"icon"}>
-                  <YoutubeIcon className="text-muted-foreground cursor-pointer h-5 w-5" />
-                </Button>
+                <Link href={FB_URL} target={"_blank"}>
+                  <Button variant={"outline"} size={"icon"}>
+                    <FacebookIcon className="text-muted-foreground cursor-pointer h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link href={IG_URL} target={"_blank"}>
+                  <Button variant={"outline"} size={"icon"}>
+                    <InstagramIcon className="text-muted-foreground cursor-pointer h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link href={YT_URL} target={"_blank"}>
+                  <Button variant={"outline"} size={"icon"}>
+                    <YoutubeIcon className="text-muted-foreground cursor-pointer h-5 w-5" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </CardContent>
@@ -123,7 +131,7 @@ const ContactUs = () => {
           <div className="mt-8 lg:w-1/2 lg:mx-6">
             <div className="w-full px-8 py-10 mx-auto overflow-hidden rounded-lg shadow-2xl dark:bg-gray-900 lg:max-w-xl shadow-gray-300/50 dark:shadow-black/50 border">
               <h1 className="text-lg font-medium text-slate-600 my-5">
-                Та юу асуумаар байгаагаа энд бичээрэй
+                Та бидэнд холбогдох мэдээллээ үлдээгээрэй
               </h1>
               <Form {...form}>
                 <form
