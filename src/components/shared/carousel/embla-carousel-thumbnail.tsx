@@ -15,13 +15,18 @@ type SlideType = {
 };
 
 type PropType = {
-  slides: SlideType[];
+  slides: {
+    data: SlideType[];
+  };
   options?: EmblaOptionsType;
   indexOfData: number;
 };
 
-export const EmblaCarouselWithThumbnail: React.FC<PropType> = (props) => {
-  const { slides, options, indexOfData } = props;
+export const EmblaCarouselWithThumbnail: React.FC<PropType> = ({
+  slides: { data },
+  options,
+  indexOfData,
+}: PropType) => {
   const [selectedIndex, setSelectedIndex] = useState(indexOfData);
   const [emblaMainRef, emblaMainApi] = useEmblaCarousel(options);
   const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
@@ -55,11 +60,11 @@ export const EmblaCarouselWithThumbnail: React.FC<PropType> = (props) => {
     <div className="embla2 relative max-w-xs xs:max-w-md md:max-w-2xl lg:max-w-3xl w-full">
       {/* Title and description */}
       <div className="pb-2 text-center">
-        <p className="text-xl">{slides && slides[selectedIndex]?.title}</p>
+        <p className="text-xl">{data?.[selectedIndex]?.title}</p>
       </div>
       <div className="embla__viewport" ref={emblaMainRef}>
         <div className="embla__container2">
-          {slides?.map((item, index) => (
+          {data?.map((item, index) => (
             <div
               className={`embla__slide2 h-96 ${
                 index === selectedIndex ? "!opacity-100 !ml-0" : "!opacity-50"
@@ -100,7 +105,7 @@ export const EmblaCarouselWithThumbnail: React.FC<PropType> = (props) => {
       <div className="embla-thumbs">
         <div className="embla-thumbs__viewport" ref={emblaThumbsRef}>
           <div className="embla-thumbs__container">
-            {slides?.map((item, index) => (
+            {data?.map((item, index) => (
               <Thumb
                 item={item}
                 key={index}
@@ -118,7 +123,7 @@ export const EmblaCarouselWithThumbnail: React.FC<PropType> = (props) => {
           <span className="text-slate-700 font-normal">
             {selectedIndex + 1}
           </span>
-          / {slides?.length}
+          / {data?.length}
         </p>
       </div>
     </div>
@@ -132,9 +137,12 @@ type ThumbPropType = {
   onClick: () => void;
 };
 
-const Thumb: React.FC<ThumbPropType> = (props) => {
-  const { selected, onClick, index, item } = props;
-
+const Thumb: React.FC<ThumbPropType> = ({
+  selected,
+  onClick,
+  index,
+  item,
+}: ThumbPropType) => {
   return (
     <div
       className={`embla-thumbs__slide ${

@@ -14,6 +14,7 @@ import { z } from "zod";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -159,7 +160,7 @@ const ContactUs = () => {
                       <FormItem>
                         <FormLabel>Нэр</FormLabel>
                         <FormControl>
-                          <Input placeholder="Example Name..." {...field} />
+                          <Input placeholder="Таны нэр..." {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -172,7 +173,7 @@ const ContactUs = () => {
                       <FormItem>
                         <FormLabel>Утасны дугаар</FormLabel>
                         <FormControl>
-                          <Input placeholder="987654321..." {...field} />
+                          <Input placeholder="Таны утас..." {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -185,10 +186,7 @@ const ContactUs = () => {
                       <FormItem>
                         <FormLabel>Имэйл хаяг</FormLabel>
                         <FormControl>
-                          <Input
-                            placeholder="example@example.com..."
-                            {...field}
-                          />
+                          <Input placeholder="Таны имэйл хаяг..." {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -203,7 +201,7 @@ const ContactUs = () => {
                         <FormControl>
                           <textarea
                             className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 focus:border-green-600 focus:ring-green-600 focus:outline-none focus:ring focus:ring-opacity-40"
-                            placeholder="Message..."
+                            placeholder="Таны санал хүсэлт..."
                             {...field}
                           />
                         </FormControl>

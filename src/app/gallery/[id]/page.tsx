@@ -36,7 +36,7 @@ const GalleryDetail = () => {
                 <DynamicSkeleton size="475" />
               </React.Fragment>
             ))
-          : data?.map((el: any, key: number) => (
+          : data?.data?.map((el: any, key: number) => (
               <Dialog key={key}>
                 <DialogTrigger
                   onClick={() => setIndexOfData(key)}
