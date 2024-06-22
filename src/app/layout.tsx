@@ -9,21 +9,20 @@ import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
-//TODO: add ssl url after all
 export const metadata: Metadata = {
   title: "Baasanjav & Herbalife",
   description: "Welcome to my portfolio",
   openGraph: {
     images: [
       {
-        url: "/assets/travel-world.jpg",
+        url: "/assets/landing-page.jpg",
         width: 1200,
         height: 630,
         alt: "home",
       },
     ],
   },
-  metadataBase: new URL("http://baaskaherbalifeclub.com/"),
+  metadataBase: new URL("http://baaskaherbalifeclub.com"),
 };
 
 export default function RootLayout({

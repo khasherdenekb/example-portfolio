@@ -18,11 +18,11 @@ type MenuData = {
   };
 };
 
-const fetcher = (url: string) => {
+const fetcher = async (url: string) => {
   const token = Buffer.from(`${BASIC_AUTH_USER}:${BASIC_AUTH_PW}`).toString(
     "base64"
   );
-  return fetch(url, {
+  return await fetch(url, {
     headers: {
       Authorization: `Basic ${token}`,
     },

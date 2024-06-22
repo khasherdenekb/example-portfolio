@@ -6,14 +6,14 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "/assets/travel-world.jpg",
+        url: "/assets/programm-page.jpg",
         width: 1200,
         height: 630,
-        alt: "links",
+        alt: "programm",
       },
     ],
   },
-  metadataBase: new URL("http://baaskaherbalifeclub.com/"),
+  metadataBase: new URL("http://baaskaherbalifeclub.com"),
 };
 
 export default function RootLayout({

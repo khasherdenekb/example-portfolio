@@ -13,7 +13,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  metadataBase: new URL("http://baaskaherbalifeclub.com/"),
+  metadataBase: new URL("http://baaskaherbalifeclub.com"),
 };
 
 export default function RootLayout({

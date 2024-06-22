@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Холбоос",
-  description: "Холбоос",
+  title: "Бүтээгдэхүүний холбоос",
+  description: "Бүтээгдэхүүний холбоос",
   openGraph: {
     images: [
       {
-        url: "/assets/travel-world.jpg",
+        url: "/assets/links-page.jpg",
         width: 1200,
         height: 630,
         alt: "links",
       },
     ],
   },
-  metadataBase: new URL("http://baaskaherbalifeclub.com/"),
+  metadataBase: new URL("http://baaskaherbalifeclub.com"),
 };
 
 export default function RootLayout({
