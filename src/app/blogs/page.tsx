@@ -60,12 +60,12 @@ const Blogs = () => {
           ) : (
             <>
               <div className="space-y-2 not-prose ">
-                <h1 className="text-4xl font-extrabold tracking-tight">
+                <h1 className="text-xl lg:text-4xl font-extrabold tracking-tight">
                   {data?.data?.[0]?.title}
                 </h1>
               </div>
               <div
-                className="py-8"
+                className="py-8 break-words"
                 dangerouslySetInnerHTML={{
                   __html: data?.data?.[0]?.body,
                 }}

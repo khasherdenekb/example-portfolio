@@ -20,6 +20,13 @@ const Videos = () => {
   const loadingArray = new Array(6).fill(null);
   const { data, isLoading, isError } = GetVideos(page);
 
+  useEffect(() => {
+    const currentParams = new URLSearchParams(window.location.search);
+    if (currentParams.get("page") !== page) {
+      setPage(currentParams.get("page") || "1");
+    }
+  }, [searchParams, page]);
+
   if (isError) return <div>Failed to load</div>;
 
   const handlePageChange = (newPage: string) => {
@@ -28,19 +35,12 @@ const Videos = () => {
     router.push(`${pathname}?${currentParams.toString()}`);
   };
 
-  useEffect(() => {
-    const currentParams = new URLSearchParams(window.location.search);
-    if (currentParams.get("page") !== page) {
-      setPage(currentParams.get("page") || "1");
-    }
-  }, [searchParams, page]);
-
   return (
     <>
       <PageImage isLoading={isLoading} title="Бичлэгүүд" />
       <div className="py-20 lg:py-5 gap-5 grid grid-cols-1 xl:grid-cols-2">
         {isLoading ? (
-          loadingArray?.map((_, index) => (
+          loadingArray.map((_, index) => (
             <React.Fragment key={index}>
               <DynamicSkeleton size="650" />
             </React.Fragment>

@@ -24,7 +24,7 @@ const AboutSlug = () => {
           <DynamicSkeleton size="750" />
         ) : (
           <div
-            className="pb-2"
+            className="pb-2 break-words"
             dangerouslySetInnerHTML={{ __html: data.description }}
           />
         )}

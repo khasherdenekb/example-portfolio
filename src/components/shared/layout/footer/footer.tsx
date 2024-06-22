@@ -14,7 +14,7 @@ export default function Footer(): JSX.Element {
       <div className="py-16">
         <Newsletter />
         <hr className="py-4 mx-10" />
-        <div className="flex flex-col lg:flex-row gap-5 justify-between px-10">
+        <div className="flex flex-col lg:flex-row text-center lg:text-left gap-5 justify-between px-10">
           <div className="flex gap-2 items-center justify-center">
             <p className="font-medium text-sm tracking-normal text-slate-600">
               С. Баасанжав бүх зүйл хуулиар хамгаалагдсан болно 2024.

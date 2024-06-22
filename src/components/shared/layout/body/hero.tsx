@@ -23,7 +23,7 @@ export const Hero = () => {
               <h1 className="text-3xl font-extrabold text-white sm:text-5xl stroke-slate-950">
                 Тавтай морилно уу
                 <strong
-                  className="block font-extrabold text-green-500 pt-2"
+                  className="block font-extrabold text-green-500 pt-2 break-words"
                   dangerouslySetInnerHTML={{
                     __html: data?.title,
                   }}
@@ -31,7 +31,7 @@ export const Hero = () => {
               </h1>
 
               <div
-                className="max-w-lg mx-auto mt-4 sm:text-xl/relaxed lg:mx-0 text-white"
+                className="max-w-lg mx-auto mt-4 sm:text-xl/relaxed lg:mx-0 text-white break-words"
                 dangerouslySetInnerHTML={{
                   __html: data?.content,
                 }}

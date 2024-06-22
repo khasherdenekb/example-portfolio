@@ -32,7 +32,11 @@ const Links = () => {
                 </React.Fragment>
               ))
             : linksData?.map((link: LinkCategoryProps) => (
-                <LinkImages link={link} isLoading={isLoading} key={link.id} />
+                <LinkImages
+                  link={link}
+                  isLoading={isLoading}
+                  key={link?.title}
+                />
               ))}
         </div>
       </section>
@@ -47,7 +51,7 @@ const LinkImages = ({
 }: {
   link: LinkCategoryProps;
   isLoading: boolean;
-  key: number | string;
+  key: string;
 }) => {
   return (
     <Link key={key} href={link?.url || "#"} target="_blank">

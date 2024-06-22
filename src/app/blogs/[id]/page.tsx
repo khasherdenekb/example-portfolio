@@ -45,7 +45,7 @@ const BlogDetail = () => {
                   {data?.title}
                 </h1>
                 <div
-                  className="py-8"
+                  className="py-8 break-words"
                   dangerouslySetInnerHTML={{
                     __html: data?.body,
                   }}

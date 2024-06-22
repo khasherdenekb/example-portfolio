@@ -30,7 +30,7 @@ export function HomeVideo({ type }: { type: string }) {
               unoptimized
               className="rounded-3xl shadow-2xl transition-shadow duration-300 ease-in-out object-cover"
               src={thumbnailUrl}
-              alt={"Video thumbnail"}
+              alt={"video-thumbnail"}
               fill
             />
             <div className="absolute inset-0 flex items-center justify-center">

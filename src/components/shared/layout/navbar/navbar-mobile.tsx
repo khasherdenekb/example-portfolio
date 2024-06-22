@@ -1,7 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { GetMenuData } from "./_actions";
@@ -33,20 +38,19 @@ export function NavbarMobile() {
         <ul className="flex flex-col gap-4">
           {menuData.map((menuItem) => (
             <React.Fragment key={menuItem?.id}>
-              <li>
+              <SheetClose asChild>
                 <Link className="text-[#266431]" href={menuItem?.url}>
                   {menuItem?.title}
                 </Link>
-              </li>
-              {menuItem.subMenu.length > 0
-                ? menuItem.subMenu.map((subMenuItem) => (
-                    <li key={subMenuItem?.id}>
-                      <Link className="text-[#266431]" href={subMenuItem?.url}>
-                        {subMenuItem?.title}
-                      </Link>
-                    </li>
-                  ))
-                : null}
+              </SheetClose>
+              {menuItem.subMenu.length > 0 &&
+                menuItem.subMenu.map((subMenuItem) => (
+                  <SheetClose key={subMenuItem?.id} asChild>
+                    <Link className="text-[#266431]" href={subMenuItem?.url}>
+                      {subMenuItem?.title}
+                    </Link>
+                  </SheetClose>
+                ))}
             </React.Fragment>
           ))}
         </ul>
