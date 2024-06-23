@@ -13,8 +13,10 @@ import { GetMenuData } from "./_actions";
 import { LoadingSpinner } from "@/components/custom/loading-spinner";
 import { ERROR_MSG } from "@/lib/constants";
 import React from "react";
+import { usePathname } from "next/navigation";
 
 export function NavbarMobile() {
+  const pathname = usePathname();
   const { menuData, isLoading, isError } = GetMenuData();
 
   if (isLoading) {
@@ -39,14 +41,24 @@ export function NavbarMobile() {
           {menuData.map((menuItem) => (
             <React.Fragment key={menuItem?.id}>
               <SheetClose asChild>
-                <Link className="text-[#266431]" href={menuItem?.url}>
+                <Link
+                  className={`text-[#266431] p-1 ${
+                    pathname === menuItem?.url && "!bg-muted text-black"
+                  }`}
+                  href={menuItem?.url}
+                >
                   {menuItem?.title}
                 </Link>
               </SheetClose>
               {menuItem.subMenu.length > 0 &&
                 menuItem.subMenu.map((subMenuItem) => (
                   <SheetClose key={subMenuItem?.id} asChild>
-                    <Link className="text-[#266431]" href={subMenuItem?.url}>
+                    <Link
+                      className={`text-[#266431] p-1 ${
+                        pathname === subMenuItem?.url && "!bg-muted text-black"
+                      }`}
+                      href={subMenuItem?.url}
+                    >
                       {subMenuItem?.title}
                     </Link>
                   </SheetClose>

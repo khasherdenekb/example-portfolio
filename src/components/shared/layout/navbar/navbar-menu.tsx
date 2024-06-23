@@ -15,9 +15,11 @@ import {
 import { GetMenuData } from "./_actions";
 import { LoadingSpinner } from "@/components/custom/loading-spinner";
 import { ERROR_MSG } from "@/lib/constants";
+import { usePathname } from "next/navigation";
 
 export function NavbarMenu() {
   const { menuData, isLoading, isError } = GetMenuData();
+  const pathname = usePathname();
 
   if (isLoading) {
     return (
@@ -31,16 +33,19 @@ export function NavbarMenu() {
 
   return (
     <NavigationMenu className="text-[#266431] z-50">
-      <NavigationMenuList className="z-[9999] relative">
+      <NavigationMenuList className="relative">
         {menuData.map((menuItem) => (
           <NavigationMenuItem key={menuItem.id}>
-            {menuItem.subMenu.length > 0 ? (
+            {menuItem?.subMenu?.length > 0 ? (
               <>
                 <NavigationMenuTrigger>{menuItem.title}</NavigationMenuTrigger>
-                <NavigationMenuContent className="z-[9999]">
+                <NavigationMenuContent>
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                    {menuItem.subMenu.map((subMenuItem) => (
+                    {menuItem?.subMenu?.map((subMenuItem) => (
                       <ListItem
+                        className={`${
+                          subMenuItem.url === pathname && "!bg-muted border"
+                        }`}
                         key={subMenuItem.id}
                         href={subMenuItem.url}
                         title={subMenuItem.title}
@@ -53,7 +58,14 @@ export function NavbarMenu() {
               </>
             ) : (
               <Link href={menuItem.url} legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    pathname === menuItem.url
+                      ? "!bg-muted border text-black"
+                      : ""
+                  )}
+                >
                   {menuItem.title}
                 </NavigationMenuLink>
               </Link>
@@ -75,7 +87,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            " block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
