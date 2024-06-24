@@ -13,41 +13,34 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { CheckIcon, ChevronsUpDown } from "lucide-react";
+import { CheckIcon, ChevronsUpDown, EraserIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CommandList } from "cmdk";
 import Link from "next/link";
-
-const categories = [
-  {
-    id: 1,
-    image: "/travel-banner1.jpg",
-    title: "Category 1",
-  },
-  {
-    id: 2,
-    image: "/travel-banner2.jpg",
-    title: "Category 2",
-  },
-  {
-    id: 3,
-    image: "/travel-banner3.jpg",
-    title: "Category 3",
-  },
-  {
-    id: 4,
-    image: "/travel-banner4.jpg",
-    title: "Category 4",
-  },
-];
+import { GetCategories } from "../_actions";
+import { ERROR_MSG } from "@/lib/constants";
+import { DynamicSkeleton } from "@/components/custom/skeletons";
+import { useSearchParams } from "next/navigation";
 
 export const BlogFilter = () => {
+  const searchParams = useSearchParams();
+  const { data, isLoading, isError } = GetCategories();
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = React.useState(
+    searchParams.get("categoryId") || ""
+  );
+
+  if (isError) return <p>{ERROR_MSG}</p>;
+  if (isLoading) return <DynamicSkeleton size="50" />;
+
+  const handleSelect = (currentValue: string) => {
+    setValue(currentValue);
+    setOpen(false);
+  };
 
   return (
     <>
-      <div className="flex gap-2 items-center py-5 justify-end">
+      <div className="flex gap-2 items-center justify-end">
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
             <Button
@@ -57,9 +50,7 @@ export const BlogFilter = () => {
               className="flex w-full justify-between"
             >
               {value
-                ? categories.find(
-                    (category) => category.title.toString() === value
-                  )?.title
+                ? data?.find((item: { id: string }) => item.id == value)?.title
                 : "Ангилалаа сонгоно уу..."}
               <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
@@ -70,27 +61,22 @@ export const BlogFilter = () => {
               <CommandEmpty>Ангилалаа олдсонгүй.</CommandEmpty>
               <CommandGroup>
                 <CommandList>
-                  {categories.map((category) => (
+                  {data.map((item: { id: string; title: string }) => (
                     <Link
-                      key={category.id}
-                      href={`/categories?category=${category.id}`}
+                      key={item.id}
+                      href={`/blogs?page=1&categoryId=${item.id}`}
                     >
                       <CommandItem
-                        value={category.title}
-                        onSelect={(currentValue) => {
-                          setValue(currentValue === value ? "" : currentValue);
-                          setOpen(false);
-                        }}
+                        value={item.title}
+                        onSelect={() => handleSelect(item.id)}
                       >
                         <CheckIcon
                           className={cn(
                             "mr-2 h-4 w-4",
-                            value === category?.title
-                              ? "opacity-100"
-                              : "opacity-0"
+                            value == item?.id ? "opacity-100" : "opacity-0"
                           )}
                         />
-                        {category?.title}
+                        {item?.title}
                       </CommandItem>
                     </Link>
                   ))}
@@ -99,6 +85,19 @@ export const BlogFilter = () => {
             </Command>
           </PopoverContent>
         </Popover>
+        <Link href={"/blogs?page=1"}>
+          <Button
+            onClick={() => {
+              setOpen(false);
+              setValue("");
+            }}
+            className="ml-2 bg-red-500 hover:bg-red-700"
+            disabled={!value}
+            size={"icon"}
+          >
+            <EraserIcon className="w-4 h-4" />
+          </Button>
+        </Link>
       </div>
     </>
   );

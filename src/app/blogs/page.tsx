@@ -25,16 +25,23 @@ const Blogs = () => {
   const router = useRouter();
   const loadingArray = new Array(8).fill(null);
 
+  const [categoryId, setCategoryId] = useState(
+    searchParams.get("categoryId") || ""
+  );
   const [page, setPage] = useState(searchParams.get("page") || "1");
-
-  const { data, isError, isLoading } = GetBlogs(page);
 
   useEffect(() => {
     const currentParams = new URLSearchParams(window.location.search);
-    if (currentParams.get("page") !== page) {
-      setPage(currentParams.get("page") || "1");
+    const newPage = currentParams.get("page") || "1";
+    const newCategoryId = currentParams.get("categoryId") || "";
+
+    if (newPage !== page || newCategoryId !== categoryId) {
+      setPage(newPage);
+      setCategoryId(newCategoryId);
     }
-  }, [searchParams, page]);
+  }, [searchParams, page, categoryId]);
+
+  const { data, isError, isLoading } = GetBlogs(page, categoryId);
 
   const handlePageChange = (newPage: string) => {
     const currentParams = new URLSearchParams(window.location.search);
