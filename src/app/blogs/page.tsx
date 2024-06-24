@@ -9,6 +9,7 @@ import { BlurImage } from "@/components/custom/blur-image";
 import React, { useState, useEffect } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { BlogSkeleton, DynamicSkeleton } from "@/components/custom/skeletons";
+import { BlogFilter } from "./_components/blog-filter";
 
 type BlogFeatureDetailProps = {
   id: number | string;
@@ -76,6 +77,7 @@ const Blogs = () => {
       </Card>
       <Card className="space-y-6 h-fit">
         <CardContent className="grid gap-4 py-8">
+          <BlogFilter />
           <h2 className="text-2xl font-bold tracking-tight">
             Нэмэлт мэдээнүүд
           </h2>
