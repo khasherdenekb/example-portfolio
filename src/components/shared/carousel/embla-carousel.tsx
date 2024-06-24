@@ -46,7 +46,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           {slides?.map((item: string, index: React.Key) => (
             <div className="embla__slide" key={index}>
               <BlurImage
-                className="embla__slide__img"
+                className="embla__slide__img !h-[30rem] md:!h-[40rem]  2xl:!h-[50rem]"
                 src={item}
                 alt={item + index}
                 isLoading={isLoading}

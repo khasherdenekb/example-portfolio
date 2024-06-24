@@ -5,7 +5,6 @@
   margin: auto;
   --slide-spacing: 1rem;
   --slide-size: 70%;
-  --slide-height: 40rem;
 }
 .embla__viewport {
   overflow: hidden;
@@ -24,7 +23,6 @@
 .embla__slide__img {
   border-radius: 1.8rem;
   display: block;
-  height: var(--slide-height);
   width: 100%;
   object-fit: cover;
 }
