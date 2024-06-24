@@ -1,7 +1,12 @@
 "use client";
 import Link from "next/link";
 import { GetBlogs } from "./_actions";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+} from "@/components/ui/card";
 import { ERROR_MSG } from "@/lib/constants";
 import { Pagination } from "@nextui-org/pagination";
 import { Badge } from "@/components/ui/badge";
@@ -57,15 +62,15 @@ const Blogs = () => {
         <CardContent>
           <figure className="mb-6 -mx-4 md:-mx-0 my-8">
             <BlurImage
-              isLoading={isLoading}
+              isLoading={data?.data?.length === 0 || isLoading}
               src={data?.data?.[0]?.image}
-              alt={data?.data?.[0]?.title}
+              alt={data?.data?.[0]?.title || "no-img"}
               className="aspect-[3/1] w-full rounded-lg object-cover"
             />
           </figure>
           {isLoading ? (
             <BlogSkeleton />
-          ) : (
+          ) : data.data.length > 0 ? (
             <>
               <div className="space-y-2 not-prose ">
                 <h1 className="text-xl lg:text-4xl font-extrabold tracking-tight">
@@ -79,6 +84,10 @@ const Blogs = () => {
                 }}
               />
             </>
+          ) : (
+            <div>
+              <p>Мэдээлэл байхгүй байна...</p>
+            </div>
           )}
         </CardContent>
       </Card>
@@ -88,33 +97,43 @@ const Blogs = () => {
           <h2 className="text-2xl font-bold tracking-tight">
             Нэмэлт мэдээнүүд
           </h2>
-          <div className="grid gap-4">
-            {isLoading
-              ? loadingArray.map((_, index) => (
-                  <React.Fragment key={index}>
-                    <DynamicSkeleton size="80" />
-                  </React.Fragment>
-                ))
-              : data?.data
-                  ?.slice(1)
-                  ?.map((blog: BlogFeatureDetailProps) => (
-                    <BlogFeatureDetail
-                      blog={blog}
-                      isLoading={isLoading}
-                      key={blog.id}
-                    />
-                  ))}
-          </div>
-          <Card className="p-2">
-            <Pagination
-              showControls
-              color="success"
-              total={data.totalPages}
-              initialPage={Number(page)}
-              onChange={(e) => handlePageChange(e.toString())}
-              variant={"flat"}
-            />
-          </Card>
+          {data?.data?.length > 1 && (
+            <div className="grid gap-4">
+              {isLoading
+                ? loadingArray.map((_, index) => (
+                    <React.Fragment key={index}>
+                      <DynamicSkeleton size="80" />
+                    </React.Fragment>
+                  ))
+                : data?.data
+                    ?.slice(1)
+                    ?.map((blog: BlogFeatureDetailProps) => (
+                      <BlogFeatureDetail
+                        blog={blog}
+                        isLoading={isLoading}
+                        key={blog.id}
+                      />
+                    ))}
+            </div>
+          )}
+          {data?.data?.length > 1 ? (
+            <Card className="p-2">
+              <Pagination
+                showControls
+                color="success"
+                total={data.totalPages}
+                initialPage={Number(page)}
+                onChange={(e) => handlePageChange(e.toString())}
+                variant={"flat"}
+              />
+            </Card>
+          ) : (
+            <Card>
+              <CardHeader>
+                <CardDescription>Мэдээлэл байхгүй байна...</CardDescription>
+              </CardHeader>
+            </Card>
+          )}
         </CardContent>
       </Card>
     </div>
