@@ -12,7 +12,7 @@ export const PageTitle = ({ title, className }: PageTitleProps) => {
     <h2
       className={cn(
         className,
-        "scroll-m-20 text-3xl font-semibold first:mt-0 border-b tracking-normal my-5 pb-2"
+        "scroll-m-20 text-xl lg:text-3xl font-semibold first:mt-0 border-b tracking-normal my-5 pb-2"
       )}
     >
       {title}

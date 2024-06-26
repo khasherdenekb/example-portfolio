@@ -16,6 +16,14 @@ const AboutSlug = () => {
   return (
     <Card className="my-5">
       <CardContent>
+        {data?.image && (
+          <BlurImage
+            className="!h-48 lg:!h-96 mt-5"
+            isLoading={isLoading}
+            src={data?.image}
+            alt={data?.title}
+          />
+        )}
         <PageTitle
           className="py-5 text-center"
           title={isLoading ? "Уншиж байна..." : data.title}
@@ -28,7 +36,6 @@ const AboutSlug = () => {
             dangerouslySetInnerHTML={{ __html: data.description }}
           />
         )}
-        <BlurImage isLoading={isLoading} src={data?.image} alt={data?.title} />
         <p className="right-0 text-muted-foreground">
           Нийтэлсэн огноо: {isLoading ? "Уншиж байна..." : data?.date}
         </p>
